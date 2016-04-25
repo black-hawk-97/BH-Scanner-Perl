@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 # Coded By Black Hawk ^_^
+# 2016/04/25  11:07 PM
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
@@ -129,9 +130,9 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 }
 
 
-	open sbhscannerTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
-	print sbhscannerTTTFILE "$ver";
-	close sbhscannerTTTFILE;
+	open sverrrTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
+	print sverrrTTTFILE "$ver";
+	close sverrrTTTFILE;
 
 
 
