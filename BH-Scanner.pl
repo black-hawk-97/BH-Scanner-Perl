@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Goooooooooooood ^_^
+# Coded By Black Hawk ^_^
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
@@ -50,7 +50,7 @@ print color("yellow") . '
 
 # Update Valiables
 my $upreq = "";
-my $whilereq = "0";
+my $whilereq = "NO";
 my $up = new LWP::UserAgent;
 my $upfile = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/check.txt")->decoded_content;
 my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
@@ -58,88 +58,85 @@ open(VERSIONFILE, "<Data/Version.txt");
 my $version = <VERSIONFILE>;
 
 # Check Version
-while("$whilereq" eq "0"){
+while("$whilereq" eq "NO"){
 if ("$ver" =~ "$version"){
+banner();
 print color("yellow") . "   [~] There Is A New Update , Do You Want To Update Now ? [Y/n] : " . color("reset");
 $upreq = <STDIN>;
 chomp($upreq);
+}else{
+last;
 }
 
 if ("$upreq" eq "y" or "$upreq" eq "Y" or "$upreq" eq "Yes" or "$upreq" eq "yes" or "$upreq" eq "YES" or "$upreq" eq ""){
 	print color("green") . "   [~] Updating... \n" . color("reset");
+	$whilereq = "YES";
 
-
-
+my $sREADME = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/README.md")->decoded_content;
 if ("$upfile" =~ 'README-Update-req'){
-	open TTTFILE, ">" . "README.md" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open sREADMETTTFILE, ">" . "README.md" or die "Cannot overwrite file: $!";
+	print sREADMETTTFILE "$sREADME";
+	close sREADMETTTFILE;
 }
 
+my $sLICENCE = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/LICENCE")->decoded_content;
 if ("$upfile" =~ 'LICENCE-Update-req'){
-	open TTTFILE, ">" . "grabber/tt.txt" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open sLICENCETTTFILE, ">" . "LICENCE" or die "Cannot overwrite file: $!";
+	print sLICENCETTTFILE "$sLICENCE";
+	close sLICENCETTTFILE;
 }
 
+my $sjjoomscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/jjoomscanner.pl")->decoded_content;
 if ("$upfile" =~ 'joomscanner-Update-req'){
-	open TTTFILE, ">" . "grabber/joomscanner.pl" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open sjjoomscannerTTTFILE, ">" . "grabber/joomscanner.pl" or die "Cannot overwrite file: $!";
+	print sjjoomscannerTTTFILE "$sjjoomscanner";
+	close sjjoomscannerTTTFILE;
 }
 
+my $svbscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/vbscanner.pl")->decoded_content;
 if ("$upfile" =~ 'vbscanner-Update-req'){
-	open TTTFILE, ">" . "grabber/vbscanner.pl" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open svbscannerTTTFILE, ">" . "grabber/vbscanner.pl" or die "Cannot overwrite file: $!";
+	print svbscannerTTTFILE "$svbscanner";
+	close svbscannerTTTFILE;
 }
 
+my $swpscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/wpscanner.pl")->decoded_content;
 if ("$upfile" =~ 'wpscanner-Update-req'){
-	open TTTFILE, ">" . "grabber/wpscanner.pl" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open swpscannerTTTFILE, ">" . "grabber/wpscanner.pl" or die "Cannot overwrite file: $!";
+	print swpscannerTTTFILE "$swpscanner";
+	close swpscannerTTTFILE;
 }
 
+my $swplist = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/wplist.txt")->decoded_content;
 if ("$upfile" =~ 'wplist-Update-req'){
-	open TTTFILE, ">" . "grabber/wplist.txt" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open swplistTTTFILE, ">" . "grabber/wplist.txt" or die "Cannot overwrite file: $!";
+	print swplistTTTFILE "$swplist";
+	close swplistTTTFILE;
 }
 
+my $sjoomlist = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/joomlist.txt")->decoded_content;
 if ("$upfile" =~ 'joomlist-Update-req'){
-	open TTTFILE, ">" . "grabber/joomlist.txt" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open sjoomlistTTTFILE, ">" . "grabber/joomlist.txt" or die "Cannot overwrite file: $!";
+	print sjoomlistTTTFILE "$sjoomlist";
+	close sjoomlistTTTFILE;
 }
 
+my $sbhscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/BH-Scanner.pl")->decoded_content;
 if ("$upfile" =~ 'BH-Scanner-Update-req'){
-	open TTTFILE, ">" . "BH-Scanner.pl" or die "Cannot overwrite file: $!";
-	print TTTFILE "Whatesdfsdver";
-	close TTTFILE;
+	open sbhscannerTTTFILE, ">" . "BH-Scanner.pl" or die "Cannot overwrite file: $!";
+	print sbhscannerTTTFILE "$sbhscanner";
+	close sbhscannerTTTFILE;
 }
-
-
-
 
 }elsif ("$upreq" eq "n" or "$upreq" eq "N" or "$upreq" eq "no" or "$upreq" eq "No" or "$upreq" eq "NO" or "$upreq" eq "nO"){
 	$whilereq = "YES";
+
 }else{
 	print color("red") . "  [-] Command '$upreq' Not Found !!\n" . color("reset");
-	$whilereq = "No";
+	$whilereq = "NO";
+
 }
 }
-
-
-
-exit 0;
-
-
-
-
-
-
-
-
 
 
 
