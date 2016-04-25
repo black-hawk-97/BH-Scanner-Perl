@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 # Coded By Black Hawk ^_^
 # 2016/04/25  11:07 PM
+
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
@@ -62,7 +63,7 @@ my $version = <VERSIONFILE>;
 while("$whilereq" eq "NO"){
 if ("$ver" =~ "$version"){
 banner();
-print color("yellow") . "   [~] There Is A New Update , Do You Want To Update Now ? [Y/n] : " . color("reset");
+print color("yellow") . "\n   [~] There Is A New Update , Do You Want To Update Now ? [Y/n] : " . color("reset");
 $upreq = <STDIN>;
 chomp($upreq);
 }else{
@@ -136,7 +137,7 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 
 
 
-print color("yellow") . "  [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
+print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
 exit 0;
 
 }elsif ("$upreq" eq "n" or "$upreq" eq "N" or "$upreq" eq "no" or "$upreq" eq "No" or "$upreq" eq "NO" or "$upreq" eq "nO"){
