@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # Coded By Black Hawk ^_^
-# 2016/04/25  11:07 PM
+# 2016/04/25  11:17 PM
 
 use LWP::UserAgent;
 use Term::ANSIColor;
@@ -62,12 +62,12 @@ my $version = <VERSIONFILE>;
 # Check Version
 while("$whilereq" eq "NO"){
 if ("$ver" =~ "$version"){
+last;
+}else{
 banner();
 print color("yellow") . "\n   [~] There Is A New Update , Do You Want To Update Now ? [Y/n] : " . color("reset");
 $upreq = <STDIN>;
 chomp($upreq);
-}else{
-last;
 }
 
 if ("$upreq" eq "y" or "$upreq" eq "Y" or "$upreq" eq "Yes" or "$upreq" eq "yes" or "$upreq" eq "YES" or "$upreq" eq ""){
@@ -130,10 +130,10 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 	close sbhscannerTTTFILE;
 }
 
-my $nver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
-open snver, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
-print snver "$nver";
-close snver;
+
+	open sverrrTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
+	print sverrrTTTFILE "$ver";
+	close sverrrTTTFILE;
 
 
 
