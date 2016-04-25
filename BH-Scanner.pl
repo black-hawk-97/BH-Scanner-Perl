@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# Goooooooooooood ^_^
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
