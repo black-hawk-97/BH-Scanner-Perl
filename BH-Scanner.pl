@@ -130,10 +130,10 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 	close sbhscannerTTTFILE;
 }
 
-
-	open sverrrTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
-	print sverrrTTTFILE "$ver";
-	close sverrrTTTFILE;
+my $nver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
+open snver, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
+print snver "$nver";
+close snver;
 
 
 
