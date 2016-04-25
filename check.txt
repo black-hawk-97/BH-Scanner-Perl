@@ -1,4 +1,4 @@
-BH-Scanner-Update
+BH-Scanner-Update-req
 joomlist-Update
 wplist-Update
 wpscanner-Update
@@ -6,4 +6,3 @@ vbscanner-Update
 joomscanner-Update
 LICENCE-Update
 README-Update
-tt-Update-req
