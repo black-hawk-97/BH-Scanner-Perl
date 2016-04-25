@@ -128,6 +128,16 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 	close sbhscannerTTTFILE;
 }
 
+
+	open sbhscannerTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
+	print sbhscannerTTTFILE "$ver";
+	close sbhscannerTTTFILE;
+
+
+
+print color("yellow") . "  [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
+exit 0;
+
 }elsif ("$upreq" eq "n" or "$upreq" eq "N" or "$upreq" eq "no" or "$upreq" eq "No" or "$upreq" eq "NO" or "$upreq" eq "nO"){
 	$whilereq = "YES";
 
