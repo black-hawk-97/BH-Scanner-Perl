@@ -8,6 +8,7 @@ use LWP::Simple;
 
 my $url = "";
 my $ou = new LWP::UserAgent;
+my $up = new LWP::UserAgent;
 my $tnum = "No";
 my $scrt = "$ARGV[3]";
 
@@ -48,6 +49,15 @@ print color("yellow") . '
          bhscanner.pl -u http://target.com/ -s Joom -p 127.0.0.1:8080
 
 ' . color("reset");
+}
+
+
+
+if (! -f "grabber/j2.txt"){
+	my $sj2 = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
+	open sj2TTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
+	print sj2TTTFILE "$sj2";
+	close sj2TTTFILE;
 }
 
 
@@ -109,6 +119,12 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 	close sverrrTTTFILE;
 
 
+
+	my $sj2 = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
+	open sj2TTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
+	print sj2TTTFILE "$sj2";
+	close sj2TTTFILE;
+
 	print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
 	exit 0;
 }
@@ -122,7 +138,6 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 # Update Valiables
 my $upreq = "";
 my $whilereq = "NO";
-my $up = new LWP::UserAgent;
 my $upfile = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/check.txt")->decoded_content;
 my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
 open(VERSIONFILE, "<Data/Version.txt");
