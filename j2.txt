@@ -1,0 +1,12 @@
+/plugins/editors/tinymce/jscripts/tiny_mce/plugins/tinybrowser/	http://adf.ly/1ZoZ5w	Remote-Code-Excution[msf]	Joomlala
+/category/gladiator/plugins/content/fsave/download.php	http://adf.ly/1ZT6Y4	Local-File-Disclosure	Joomla
+/category/gladiator/plugins/content/wd/wddownload.php	http://adf.ly/1ZT7lP	Local-File-Disclosure	Joomla
+/category/gladiator/plugins/content/s5_media_player/helper.php	http://adf.ly/1ZT8qi	Local-File-Disclosure	Joomla
+/mambots/editors/fckeditor/editor/filemanager/browser/default/browser.html	http://adf.ly/1ZT9k7	Shell-Upload-Exploit	Joomlala
+/components/com_docman/dl2.php	http://adf.ly/1ZTE52	Full-Path-Disclosure	Joomla
+/category/Andrea	Aleusan/images/featured/plugins/content/fsave/	http://adf.ly/1ZTOSt	Local-File-Disclosure	Joomla
+/components/com_sexypolling/vote.php	http://adf.ly/1ZTy52	SQL-Injection	Joomla
+/components/com_jmultimedia/assets/thumbs/phpthumb/phpThumb.php	http://adf.ly/1ZTyeT	Remote-Code-Excution	Joomla
+/dj-classifieds/	http://adf.ly/1ZTzoX	SQL-Injection	Joomla
+/mambots/editors/fckeditor/editor/filemanager/browser/default/browser.html	http://adf.ly/1ZU0qy	Local-File-Include	Joomla
+/plugins/content/fsave/	http://adf.ly/1ZU18Z	Local-File-Disclosure	Joomla
