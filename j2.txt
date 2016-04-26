@@ -10,3 +10,4 @@
 /dj-classifieds/	http://adf.ly/1ZTzoX	SQL-Injection	Joomla
 /mambots/editors/fckeditor/editor/filemanager/browser/default/browser.html	http://adf.ly/1ZU0qy	Local-File-Include	Joomla
 /plugins/content/fsave/	http://adf.ly/1ZU18Z	Local-File-Disclosure	Joomla
+///////
