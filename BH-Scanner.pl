@@ -158,6 +158,16 @@ if ("$upreq" eq "y" or "$upreq" eq "Y" or "$upreq" eq "Yes" or "$upreq" eq "yes"
 	print color("green") . "   [~] Updating... \n" . color("reset");
 	$whilereq = "YES";
 
+
+my $sj2up = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
+if ("$upfile" =~ 'README-Update-req'){
+	open sj2upTTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
+	print sj2upTTTFILE "$sj2up";
+	close sj2upTTTFILE;
+}
+
+
+
 my $sREADME = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/README.md")->decoded_content;
 if ("$upfile" =~ 'README-Update-req'){
 	open sREADMETTTFILE, ">" . "README.md" or die "Cannot overwrite file: $!";
