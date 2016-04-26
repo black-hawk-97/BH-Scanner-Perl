@@ -1,9 +1,9 @@
-BH-Scanner-Update
-joomlist-Update
-wplist-Update
-wpscanner-Update
-vbscanner-Update
-joomscanner-Update
-LICENCE-Update
-README-Update
+BH-Scanner-Update-req
+joomlist-Update-req
+wplist-Update-req
+wpscanner-Update-req
+vbscanner-Update-req
+joomscanner-Update-req
+LICENCE-Update-req
+README-Update-req
 j2-Update-req
