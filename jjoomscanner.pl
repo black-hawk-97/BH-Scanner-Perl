@@ -11,7 +11,30 @@ my $nvnum = "0";
 open(j,"<$file") or die "$!";
 
 banner();
-print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minutes ] \n\n" , color("reset");
+print color("green") , "\n   [+] Scanning...          [ This May Take Few Minutes ] \n" , color("reset");
+
+
+
+
+# Checking Joomla Version
+my $pourl = "https://joomjunk.co.uk/extras-page/joomla-version-detect.html";
+my $joomver = $ou->post($pourl , { site => $url , submit => '' , })->content;
+my $str = "$joomver";
+$str =~ /(<h2>Joomla version : \S+)/;
+my $verjo = "$1";
+my $rrr = substr($verjo,21);
+my @fidfelds = split /\</, $rrr;
+my $version = "";
+$version = $fidfelds[0];
+
+if ("$version" ne ""){
+	print color("green") , "\n   [+] Script : Joomla\n" . color("reset");
+	print color("green") , "   [+] Joomla Version Detected : $version\n" , color("reset");
+}else{
+	print color("green") , "\n   [+] Script : Joomla\n" . color("reset");
+	print color("red") , "   [-] Joomla Version Cannot Be Detected !!\n" , color("reset");
+}
+
 
 
 while(<j>){
@@ -25,18 +48,34 @@ while(<j>){
 	my $joomsource = $ou->get("$url")->decoded_content;
 
 if ("$joomsource" =~ "$fl"){
-	print color("yellow") , "\a  [+] URL : $url\n" , color("reset");
-	print color("yellow") , "  [+] Script : Joomla\n" . color("reset");
-	print color("yellow") , "  [+] Script Installed : $fol\n" , color("reset");
-	print color("yellow") , "  [+] Vuln. Plugin     : $fl\n" , color("reset");
-	print color("yellow") , "  [+] Vulnerable With  : $tl\n" , color("reset");
-	print color("yellow") , "  [+] Exploit          : $sl\n\n" , color("reset");
+	print color("yellow") , "   [+] Vuln. Plugin     : $fl\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : $tl\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
 	$vnum = $vnum + 1;
 }
 
 	$nvnum = $nvnum + 1;
 }
 
+
+
+if ("$version" != ""){
+if ("$version" eq "1.5" or "$version" eq "1.6" or "$version" eq "1.7" or "$version" eq "3.0" or "$version" eq "3.1" or "$version" eq "3.2" or "$version" eq "3.3" or "$version" eq "3.4" or "$version" =~ "1.5." or "$version" =~ "1.6." or "$version" =~ "1.7." or "$version" =~ "3.0." or "$version" =~ "3.1." or "$version" =~ "3.2." or "$version" =~ "3.3." or "$version" =~ "3.4." or "$version" =~ "3.4.5"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Object Injection RCE\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zp9YU\n\n" , color("reset");
+	$vnum = $vnum + 1;
+}
+
+
+if ("$version" eq "3.2" or "$version" =~ "3.2." or "$version" =~ "3.3." or "$version" =~ "3.4." or "$version" =~ "3.3" or "$version" =~ "3.4"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : SQL-Injection\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1ZpAKy\n\n" , color("reset");
+	$vnum = $vnum + 1;
+}
+# Add Here The Version Vulnerability
+}
 
 
 
