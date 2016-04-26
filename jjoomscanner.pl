@@ -11,7 +11,7 @@ my $nvnum = "0";
 open(j,"<$file") or die "$!";
 
 banner();
-print color("green") , "\n   [+] Scanning ...\n\n" , color("reset");
+print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minutes ] \n\n" , color("reset");
 
 
 while(<j>){
@@ -68,6 +68,43 @@ if ("$bbnum" eq "0"){
 		$backreqq = "No";
 	}
 }
+
+
+
+
+
+my $file2 = "grabber/j2.txt";
+my $vnum2 = "0";
+my $nvnum2 = "0";
+
+open(w2,"<$file2") or die "$!";
+
+banner();
+print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minutes ] \n\n" , color("reset");
+
+
+while(<w2>){
+	chomp($_);
+	my $str = "$_";
+	my @fields2 = split /\t/, $str;
+	my $fl2 = "$fields[0]";
+	my $sl2 = "$fields[1]";
+	my $tl2 = "$fields[2]";
+	my $fol2 = "$fields[3]";
+	my $wpsource = $ou->get("$url")->decoded_content;
+
+if (head("$url" . "$fl2")){
+	print color("yellow") , "\a   [+] URL              : $url\n" , color("reset");
+	print color("yellow") , "   [+] Script Installed : $fol2\n" , color("reset");
+	print color("yellow") , "   [+] Vuln. Plugin     : $fl2\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : $tl2\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : $sl2\n\n" , color("reset");
+	$vnum2 = $vnum2 + 1;
+}
+
+	$nvnum2 = $nvnum2 + 1;
+}
+
 
 
 
