@@ -12,7 +12,7 @@ my $up = new LWP::UserAgent;
 my $tnum = "No";
 my $scrt = "$ARGV[3]";
 
-open( vernum, ">" . "Data/Version.txt");
+open( vernum, "<" . "Data/Version.txt");
 my $vernum = <vernum>;
 sub banner(){
 system("cls");
@@ -21,7 +21,7 @@ print color("magenta") . '
       / __ )/ / / /
      / __  / /_/ /
     / /_/ / __  /
-   /_______/ /_/         ' . "$vernum" . '  By Black Hawk
+   /_______/ /_/               By Black Hawk
      / ___/_________ _____  ____  ___  _____
      \__ \/ ___/ __ `/ __ \/ __ \/ _ \/ ___/
     ___/ / /__/ /_/ / / / / / / /  __/ /
@@ -37,16 +37,18 @@ print color("yellow") . '
    Target In The Targeting Process. The Tool Can Scan And Analysis Wordpress ,
    Joomla And vBulletin Sites. Good Luck :3
 
-   -h | --help           To Learn How To Use This Tool.
-   -a | --about          To Tell You Who Us ^_^ .
-   -u | --url            To Select The Target To Scan.
-   -s | --Script         To Select Installed Script On The Site.
-   -p | --proxy          To Use Proxy With Scanning Process.
+   -h  | --help           To Learn How To Use This Tool.
+   -a  | --about          To Tell You Who Us ^_^ .
+   -u  | --url            To Select The Target To Scan.
+   -s  | --Script         To Select Installed Script On The Site.
+   -p  | --proxy          To Use Proxy With Scanning Process.
+   -up | --update		  To Update The Databases Of The Script ;) .
 
-   Ex:   bhscanner.pl -h
-         bhscanner.pl -a
-         bhscanner.pl -u http://target.com/ -s WP/VB/Joom  <--  Choose One Ex: -s WP
-         bhscanner.pl -u http://target.com/ -s Joom -p 127.0.0.1:8080
+   Ex:   BH-Scanner.pl -h
+         BH-Scanner.pl -a
+         BH-Scanner.pl --update
+         BH-Scanner.pl -u http://target.com/ -s WP/VB/Joom  <--  Choose One Ex: -s WP
+         BH-Scanner.pl -u http://target.com/ -s Joom -p 127.0.0.1:8080
 
 ' . color("reset");
 }
@@ -54,10 +56,10 @@ print color("yellow") . '
 
 
 if (! -f "grabber/j2.txt"){
-	my $sj2 = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
-	open sj2TTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
-	print sj2TTTFILE "$sj2";
-	close sj2TTTFILE;
+	my $sj2ch = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
+	open sj2chTTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
+	print sj2chTTTFILE "$sj2ch";
+	close sj2chTTTFILE;
 }
 
 
@@ -119,12 +121,6 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 	close sverrrTTTFILE;
 
 
-
-	my $sj2 = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
-	open sj2TTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
-	print sj2TTTFILE "$sj2";
-	close sj2TTTFILE;
-
 	print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
 	exit 0;
 }
@@ -157,16 +153,6 @@ chomp($upreq);
 if ("$upreq" eq "y" or "$upreq" eq "Y" or "$upreq" eq "Yes" or "$upreq" eq "yes" or "$upreq" eq "YES" or "$upreq" eq ""){
 	print color("green") . "   [~] Updating... \n" . color("reset");
 	$whilereq = "YES";
-
-
-my $sj2up = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
-if ("$upfile" =~ 'README-Update-req'){
-	open sj2upTTTFILE, ">" . "grabber/j2.txt" or die "Cannot overwrite file: $!";
-	print sj2upTTTFILE "$sj2up";
-	close sj2upTTTFILE;
-}
-
-
 
 my $sREADME = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/README.md")->decoded_content;
 if ("$upfile" =~ 'README-Update-req'){
@@ -224,7 +210,7 @@ if ("$upfile" =~ 'BH-Scanner-Update-req'){
 	close sbhscannerTTTFILE;
 }
 
-
+my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
 	open sverrrTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
 	print sverrrTTTFILE "$ver";
 	close sverrrTTTFILE;
