@@ -11,7 +11,8 @@ my $ou = new LWP::UserAgent;
 my $tnum = "No";
 my $scrt = "$ARGV[3]";
 
-
+open( vernum, ">" . "Data/Version.txt");
+my $vernum = <vernum>;
 sub banner(){
 system("cls");
 print color("magenta") . '
@@ -19,7 +20,7 @@ print color("magenta") . '
       / __ )/ / / /
      / __  / /_/ /
     / /_/ / __  /
-   /_______/ /_/               By Black Hawk
+   /_______/ /_/         ' . "$vernum" . '  By Black Hawk
      / ___/_________ _____  ____  ___  _____
      \__ \/ ___/ __ `/ __ \/ __ \/ _ \/ ___/
     ___/ / /__/ /_/ / / / / / / /  __/ /
@@ -48,6 +49,78 @@ print color("yellow") . '
 
 ' . color("reset");
 }
+
+
+
+if ("@ARGV" =~ "--update"){
+
+
+
+
+my $sREADME = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/README.md")->decoded_content;
+	open sREADMETTTFILE, ">" . "README.md" or die "Cannot overwrite file: $!";
+	print sREADMETTTFILE "$sREADME";
+	close sREADMETTTFILE;
+
+
+my $sLICENCE = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/LICENCE")->decoded_content;
+	open sLICENCETTTFILE, ">" . "LICENCE" or die "Cannot overwrite file: $!";
+	print sLICENCETTTFILE "$sLICENCE";
+	close sLICENCETTTFILE;
+
+
+my $sjjoomscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/jjoomscanner.pl")->decoded_content;
+	open sjjoomscannerTTTFILE, ">" . "grabber/joomscanner.pl" or die "Cannot overwrite file: $!";
+	print sjjoomscannerTTTFILE "$sjjoomscanner";
+	close sjjoomscannerTTTFILE;
+
+
+my $svbscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/vbscanner.pl")->decoded_content;
+	open svbscannerTTTFILE, ">" . "grabber/vbscanner.pl" or die "Cannot overwrite file: $!";
+	print svbscannerTTTFILE "$svbscanner";
+	close svbscannerTTTFILE;
+
+
+my $swpscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/wpscanner.pl")->decoded_content;
+	open swpscannerTTTFILE, ">" . "grabber/wpscanner.pl" or die "Cannot overwrite file: $!";
+	print swpscannerTTTFILE "$swpscanner";
+	close swpscannerTTTFILE;
+
+
+my $swplist = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/wplist.txt")->decoded_content;
+	open swplistTTTFILE, ">" . "grabber/wplist.txt" or die "Cannot overwrite file: $!";
+	print swplistTTTFILE "$swplist";
+	close swplistTTTFILE;
+
+
+my $sjoomlist = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/joomlist.txt")->decoded_content;
+	open sjoomlistTTTFILE, ">" . "grabber/joomlist.txt" or die "Cannot overwrite file: $!";
+	print sjoomlistTTTFILE "$sjoomlist";
+	close sjoomlistTTTFILE;
+
+
+my $sbhscanner = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/BH-Scanner.pl")->decoded_content;
+	open sbhscannerTTTFILE, ">" . "BH-Scanner.pl" or die "Cannot overwrite file: $!";
+	print sbhscannerTTTFILE "$sbhscanner";
+	close sbhscannerTTTFILE;
+
+my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/Version.txt")->decoded_content;
+	open sverrrTTTFILE, ">" . "Data/Version.txt" or die "Cannot overwrite file: $!";
+	print sverrrTTTFILE "$ver";
+	close sverrrTTTFILE;
+
+
+
+
+
+
+
+}
+
+
+
+
+
 
 
 # Update Valiables
@@ -208,7 +281,7 @@ if (defined($ARGV[4])){
 
 banner();
 
-print color("green") . "\n   [~] Scanning Site...\n" . color("reset");
+print color("green") . "\n   [~] Scanning Site...          [ This May Take Few Minutes ] \n" . color("reset");
 
 if ("$scrt" eq 'VB'){
 	print color("green") . "\n  [+] Target : $url\n" . color("reset");
