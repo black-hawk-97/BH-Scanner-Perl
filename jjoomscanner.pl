@@ -36,7 +36,7 @@ if ("$version" ne ""){
 }
 
 
-
+print "\n";
 while(<j>){
 	chomp($_);
 	my $str = "$_";
