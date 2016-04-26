@@ -53,9 +53,8 @@ print color("yellow") . '
 
 
 if ("@ARGV" =~ "--update"){
-
-
-
+	banner();
+	print color("green") . "\n   [~] Updating...          [ This May Take Few Minutes ] \n\n" . color("reset");
 
 my $sREADME = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/README.md")->decoded_content;
 	open sREADMETTTFILE, ">" . "README.md" or die "Cannot overwrite file: $!";
@@ -110,11 +109,8 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 	close sverrrTTTFILE;
 
 
-
-
-
-
-
+	print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
+	exit 0;
 }
 
 
