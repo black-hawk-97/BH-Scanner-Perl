@@ -15,6 +15,16 @@ print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minut
 
 
 
+
+# Clear Last Result
+my $htmlfile = $ou->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/htmlfile.txt")->decoded_content;
+open(HTML , '>' . "Result/Black-Hawk.html")
+print HTML "$htmlfile";
+close HTML;
+
+
+
+
 # Check Htaccess
 my $htnum = "0";
 my @htac = ('.htaccess' , '.htaccess.txt' , 'htaccess' , 'htaccess.txt');
@@ -75,10 +85,10 @@ if (head("$url" . "$fl")){
 
 
 open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
-print RES '<h1><font color="red" size="5"> [+] URL : ' . "$url" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5"> [+] Vuln. Plugin : ' . "$fl" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5"> [+] Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5"> [+] Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
+print RES '<h1><font color="red" size="5">URL : ' . "$url" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5">Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
 close RES;
 
 
