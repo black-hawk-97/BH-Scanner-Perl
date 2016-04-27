@@ -14,6 +14,48 @@ banner();
 print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minutes ] \n\n" , color("reset");
 
 
+
+# Check Htaccess
+my $htnum = "0";
+my @htac = ('.htaccess' , '.htaccess.txt' , 'htaccess' , 'htaccess.txt');
+foreach	my $ht (@htac){
+	my $shtac = $ou->get("$url/$ht")->decoded_content;
+	if (head("$url/$ht") and "$shtac" =~ "</"){
+	print color("green") , "   [+] Htaccess File Found At : $url/$ht\n" . color("reset");
+	$htnum = $htnum + 1;
+	}
+}
+if ("$htnum" eq "0"){
+	print color("on_red") , "   [-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
+}
+	
+	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
+	if (head("$url/robots.txt") and "$srobots" =~ "User-agent:" or "$srobots" =~ "User-agent:" or "$srobots" =~ "Disallow:"){
+	print color("green") , "   [+] Robots File Found At : $url/robots.txt\n" . color("reset");
+	$htnum = $htnum + 1;
+	}
+
+	if (head("$url/wp-admin")){
+	print color("green") , "   [+] Admin Panel Found At : $url/administrtator/\n" . color("reset");
+	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	$htnum = $htnum + 1;
+	}
+	elsif (head("$url/admin")){
+	print color("green") , "   [+] Admin Panel Found At : $url/admin/\n" . color("reset");
+	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	$htnum = $htnum + 1;
+	}
+	elsif (head("$url/wp-login.php")){
+	print color("green") , "   [+] Admin Panel Found At : $url/manage/\n" . color("reset");
+	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	$htnum = $htnum + 1;
+	}else{
+	print color("on_red") , "   [-] Admin Panel Not Found !!\n" . color("reset");
+	}
+
+
+
+
 while(<w>){
 	chomp($_);
 	my $str = "$_";
@@ -60,13 +102,13 @@ if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
 }
 }
 if ("$bbnum" eq "0"){
-	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print color("on_red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
@@ -94,14 +136,14 @@ foreach $cnconfig(@cnconfigs){
     }
 }
 if ("$ccnum" eq "0"){
-	print color("red") . "      [-] Not Found Any Config File !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Any Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print color("on_red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
@@ -124,14 +166,14 @@ foreach $shell(@shells){
     }
 }
 if ("$scnum" eq "0"){
-	print color("red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print color("on_red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
@@ -178,13 +220,13 @@ foreach my $subdodo (@subconfigs){
     }
 }
 if ("$bsubnum" eq "0"){
-	print color("red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
 }
 }elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
 		$subreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		print color("on_red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
 		$subreqq = "No";
 	}
 }
@@ -213,14 +255,14 @@ foreach $ups(@uploadsp){
     }
 }
 if ("$supum" eq "0"){
-	print color("red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
 }
 
 }elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
 		$supupreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		print color("on_red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
 		$supupreqq = "No";
 	}
 }
@@ -233,7 +275,7 @@ if ("$supum" eq "0"){
 
 if ("$vnum" eq "0"){
 	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("red") , "  [-] Sorry Not Found." , color("reset");
+	print color("on_red") , "  [-] Sorry Not Found." , color("reset");
 }else{
 	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
 	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
