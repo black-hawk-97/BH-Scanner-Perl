@@ -7,6 +7,11 @@ my $ou = new LWP::UserAgent;
 my $file = "grabber/joomlist.txt";
 my $vnum = "0";
 my $nvnum = "0";
+my $url2 = "";
+
+
+
+
 
 open(j,"<$file") or die "$!";
 
@@ -60,26 +65,21 @@ if ("$htnum" eq "0"){
 	$htnum = $htnum + 1;
 	}
 
-	my $scp = $ou->get("$url/administrtator/")->decoded_content;
-	if (head("$url/administrtator") and "$scp" =~ "admin" or "$scp" =~ "panel" or "$scp" =~ "login"){
+	if (head("$url/administrator")){
 	print color("green") , "   [+] Admin Panel Found At : $url/administrtator/\n" . color("reset");
 	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 
 
-
-	my $scp1 = $ou->get("$url/admin/")->decoded_content;
-	if (head("$url/admin/") and "$scp1" =~ "admin" or "$scp1" =~ "panel" or "$scp1" =~ "login"){
+	if (head("$url/admin")){
 	print color("green") , "   [+] Admin Panel Found At : $url/admin/\n" . color("reset");
 	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 
 
-
-	my $scp2 = $ou->get("$url/manage/")->decoded_content;
-	if (head("$url/manage/") and "$scp2" =~ "admin" or "$scp2" =~ "panel" or "$scp2" =~ "scp2"){
+	if (head("$url/manage")){
 	print color("green") , "   [+] Admin Panel Found At : $url/manage/\n" . color("reset");
 	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
@@ -130,10 +130,10 @@ if (head("$url" . "$fl2")){
 	print color("yellow") , "   [+] Vuln. Plugin     : $fl2\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : $tl2\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : $sl2\n\n" , color("reset");
-	$vnum2 = $vnum2 + 1;
+	$vnum = $vnum + 1;
 }
 
-	$nvnum2 = $nvnum2 + 1;
+	$nvnum = $nvnum + 1;
 }
 
 
@@ -167,18 +167,17 @@ my $backreq = <STDIN>;
 chomp($backreq);
 if ("$backreq" eq "y" or "$backreq" eq "Y" or "$backreq" eq "Yes" or "$backreq" eq "yes" or "$backreq" eq "YES" or "$backreq" eq ""){
 	$backreqq = "Yes";
-@configs = ('backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
-print "\n";
-foreach my $config (@configs){
-	my $srt = $ou->get("$url/$config")->decoded_content;
-    if (head("$url/$config")) {
-    	if ("$srt" =~ "Access denied." or "$srt" =~ "404 Not Found"){
-    		my $rrrrrrjdskhfg = "dfgjshd";
-    		}else{
-    print color("yellow") . "\a    - File Found : $url/$config\n" . color("reset");
+@conbfigs = ('db.txt' , '/backup.tar.gz', '/backup/backup.tar.gz', '/backup/backup.zip', '/vb/backup.zip', '/site/backup.zip', '/backup.zip', '/backup.rar', '/backup.sql', '/vb/vb.zip', '/vb.zip', '/vb.sql', '/vb.rar', '/vb1.zip', '/vb2.zip', '/vbb.zip', '/vb3.zip', '/upload.zip', '/up/upload.zip', '/joomla.zip', '/joomla.rar', '/joomla.sql', '/wordpress.zip', '/wp/wordpress.zip', '/blog/wordpress.zip', '/wordpress.rar' , 'backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
+foreach my $backjup (@conbfigs){
+
+if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
+	my $skjdfhsdjkf = "sdajkfh";
+}else{
+    if (head("$url/$backjup")) {
+    print color("yellow") . "\a    - File Found : $url/$backjup\n" . color("reset");
     $bbnum = $bbnum + 1;
-}
     }
+}
 }
 if ("$bbnum" eq "0"){
 	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
@@ -191,6 +190,8 @@ if ("$bbnum" eq "0"){
 		$backreqq = "No";
 	}
 }
+
+
 
 # Config Finder Request ^_^
 my $ccnum = "0";
@@ -253,6 +254,100 @@ if ("$scnum" eq "0"){
 }
 
 
+
+
+
+# Subdomain Finder Request ^_^
+my $bsubnum = "0";
+my $subreqq = "No";
+if ("$url" =~ "https://"){
+	$url2 = substr($url, 8);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 8);
+	}
+}elsif ("$url" =~ "http://"){
+	$url2 = substr($url, 7);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 7);
+	}
+}
+while ("$subreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Subdomain-Finder ? [Y/n] : " . color("reset");
+my $subreq = <STDIN>;
+chomp($subreq);
+if ("$subreq" eq "y" or "$subreq" eq "Y" or "$subreq" eq "Yes" or "$subreq" eq "yes" or "$subreq" eq "YES" or "$subreq" eq ""){
+	$subreqq = "Yes";
+@subconfigs = ("www." , "about.", "abose.", "acme.", "ad.", "admanager.", "admin.", "admins.", "administrador.", "administrateur.", "administrator.", "ads.", "adsense.", "adult.", "adwords.", "affiliate.", "affiliatepage.", "afp.", "analytics.", "android.", "shop.", "echop.", "blog.", "tienda.", "answer.", "ap.", "api.", "apis.", "app.", "bank.", "blogs.", "client.", "clients.", "community.", "content.", "cpanel.", "dashbord.", "data.", "developer.", "developers.", "dl.", "docs.", "documents.", "download.", "downloads.", "encrypted.", "email.", "webmail.", "mail.", "correo.", "ftp.", "forum.", "forums.", "feed.", "feeds.", "file.", "files.", "gov.", "home.", "help.", "invoice.", "invoises.", "items.", "js.", "es.", "it.", "en.", "fr.", "ar.", "legal.", "iphone.", "lab.", "labs.", "list.", "lists.", "log.", "logs.", "errors.", "net.", "mysql.", "mysqldomain.", "net.", "network.", "news.", "ns.", "ns1.", "ns2.", "ns3.", "ns4.", "ns5.", "org.", "panel.", "partner.", "partners.", "pop.", "pop3.", "private.", "proxies.", "public.", "reports.", "root.", "rss.", "prod.", "prods.", "sandbox.", "search.", "server.", "servers.", "signin.", "signup.", "login.", "smtp.", "srntp.", "ssl.", "soap.", "stat.", "statics.", "store.", "status.", "survey.", "sync.", "system.", "text.", "test.", "webadmin.", "webdisk.", "xhtml.", "xhtrnl.", "xml.");
+print "\n";
+foreach my $subdodo (@subconfigs){
+	my $srt = $ou->get('http://' . "$subdodo$urlf")->decoded_content;
+    if (head('http://' . "$subdodo$urlf")) {
+    	if ("$srt" =~ "Access denied." or "$srt" =~ "404 Not Found"){
+    		my $rjdskhfg = "dfgjshd";
+    		}else{
+    print color("yellow") . "\a    - Subdomain Found : $subdodo$urlf\n" . color("reset");
+    $bsubnum = $bsubnum + 1;
+}
+    }
+}
+if ("$bsubnum" eq "0"){
+	print color("red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+}
+}elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
+		$subreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		$subreqq = "No";
+	}
+}
+
+
+
+
+
+
+
+
+# Upload Files Finder Request ^_^
+my $supum = "0";
+my $supupreqq = "No";
+while ("$supupreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Shell-Finder ? [Y/n] : " . color("reset");
+my $suprreq = <STDIN>;
+chomp($suprreq);
+if ("$suprreq" eq "y" or "$suprreq" eq "Y" or "$suprreq" eq "Yes" or "$suprreq" eq "yes" or "$suprreq" eq "YES" or "$suprreq" eq ""){
+	$supupreqq = "Yes";
+@uploadsp = ("/up.php", "/up1.php", "up/up.php", "/site/up.php", "/vb/up.php", "/forum/up.php", "/blog/up.php", "/upload.php", "/upload1.php", "/upload2.php", "/vb/upload.php", "/forum/upload.php", "blog/upload.php", "site/upload.php", "download.php");
+foreach $ups(@uploadsp){
+    if(head("$url/$ups")){
+    	print color("yellow") . "\a    - Upload File Path : $url/$ups\n" . color("reset");
+    	$supum = $supum + 1;
+    }
+}
+if ("$supum" eq "0"){
+	print color("red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+}
+
+}elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
+		$supupreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		$supupreqq = "No";
+	}
+}
+
+
+
+
+
+
+
 if ("$vnum" eq "0"){
 	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
 	print color("red") , "  [-] Sorry Not Found." , color("reset");
@@ -272,7 +367,14 @@ if ("$bbnum" ne "0"){
 	print color("yellow") . "  [-] Backup Found : $bbnum\n" . color("reset");
 }
 
+if ("$bsubnum" ne "0"){
+	print color("yellow") . "  [-] Subdomain Found : $bsubnum\n" . color("reset");
+}
 
+
+if ("$supum" ne "0"){
+	print color("yellow") . "  [-] Upload Found : $supum\n" . color("reset");
+}
 
 
 return 1;
