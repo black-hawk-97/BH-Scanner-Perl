@@ -263,8 +263,7 @@ setInterval(flicker, 100);
      setTimeout('blinkSpan()',9999999);
     }
     </script>
+<h1><font color="Yellow" size="5">Scanning Result</font></h1><br><br>
 
 
 
-
-<h1><font color="green" size="5">Scanning Result</font></h1><br><br>
