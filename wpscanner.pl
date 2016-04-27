@@ -26,7 +26,7 @@ foreach	my $ht (@htac){
 	}
 }
 if ("$htnum" eq "0"){
-	print color("on_red") , "   [-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
+	print "   " , color("on_red") , "[-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
 }
 	
 	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
@@ -50,7 +50,7 @@ if ("$htnum" eq "0"){
 	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}else{
-	print color("on_red") , "   [-] Admin Panel Not Found !!\n" . color("reset");
+	print "   " , color("on_red") , "[-] Admin Panel Not Found !!\n" . color("reset");
 	}
 
 
@@ -72,6 +72,17 @@ if (head("$url" . "$fl")){
 	print color("yellow") , "   [+] Vuln. Plugin     : $fl\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : $tl\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
+
+
+open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+print RES '<h1><font color="red" size="5"> [+] URL : ' . "$url" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vuln. Plugin : ' . "$fl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
+close RES;
+
+
+
 	$vnum = $vnum + 1;
 }
 
