@@ -85,10 +85,10 @@ if (head("$url" . "$fl")){
 
 
 open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
-print RES '<h1><font color="red" size="5">URL : ' . "$url" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
-print RES '<h1><font color="red" size="5">Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
+print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
+print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
+print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
+print RES '<h1><font color="green" size="4">Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
 close RES;
 
 
