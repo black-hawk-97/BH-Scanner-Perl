@@ -67,21 +67,21 @@ if ("$htnum" eq "0"){
 
 	if (head("$url/administrator")){
 	print color("green") , "   [+] Admin Panel Found At : $url/administrtator/\n" . color("reset");
-	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("yellow") , "     - The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 
 
 	if (head("$url/admin")){
 	print color("green") , "   [+] Admin Panel Found At : $url/admin/\n" . color("reset");
-	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("yellow") , "     - The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 
 
 	if (head("$url/manage")){
 	print color("green") , "   [+] Admin Panel Found At : $url/manage/\n" . color("reset");
-	print color("green") , "   [!] The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("yellow") , "     - The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 
