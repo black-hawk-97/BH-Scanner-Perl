@@ -181,13 +181,13 @@ foreach my $config (@configs){
     }
 }
 if ("$bbnum" eq "0"){
-	print color("red") . "   [-] Not Found Any Backup File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "   [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
@@ -210,14 +210,14 @@ foreach $cnconfig(@cnconfigs){
     }
 }
 if ("$ccnum" eq "0"){
-	print color("red") . "   [-] Not Found Any Config File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "   [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
@@ -240,35 +240,39 @@ foreach $shell(@shells){
     }
 }
 if ("$scnum" eq "0"){
-	print color("red") . "   [-] Not Found Any Shell File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "   [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
 
 
 if ("$vnum" eq "0"){
-	print color("yellow") , "    [!] Exploit Tested : $nvnum\n" , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
 	print color("red") , "  [-] Sorry Not Found." , color("reset");
 }else{
-	print color("yellow") , "    [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("yellow") , "    [!] Exploit Found  : $vnum\n" , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
+	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
 }
 if ("$scnum" ne "0"){
-	print color("yellow") . "   [-] Shell Found : $scnum\n" . color("reset");
+	print color("yellow") . "  [-] Shell Found : $scnum\n" . color("reset");
 }
 
 if ("$ccnum" ne "0"){
-	print color("yellow") . "   [-] Config Found : $ccnum\n" . color("reset");
+	print color("yellow") . "  [-] Config Found : $ccnum\n" . color("reset");
 }
 
 if ("$bbnum" ne "0"){
-	print color("yellow") . "   [-] Backup Found : $bbnum\n" . color("reset");
+	print color("yellow") . "  [-] Backup Found : $bbnum\n" . color("reset");
 }
 
+
+
+
+return 1;
