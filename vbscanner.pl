@@ -251,12 +251,12 @@ if (head("$url/visitormessage.php")){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 5.0.0 Beta/i){
+if ("$vbdd" =~ m/vBulletin™ Version 5.0.0 Beta/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin Version 5.0.0 Beta'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiARm  /  http://adf.ly/1ZiAZt\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 }
 
 
@@ -272,23 +272,23 @@ if (head("$url" . '/ajax.php?do=inforum&result=10&listforumid=1')){
 
 $nvnum = $nvnum + 1;
 if (head("$url" . '/install/install.php')){
-	if ("$vbdd" =~ m/vBulletin Version 4/i or "$vbdd" =~ m/vBulletin Version 5/i){
+	if ("$vbdd" =~ m/vBulletin™ Version 4/i or "$vbdd" =~ m/vBulletin™ Version 5/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin Version 4.1.2'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin™ Version 4.1.2'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBTT\n" . color("reset");
 	}else{
-	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	}
 }
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.8/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3.8/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin Version 3.8.x'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBhV\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin Version 3.8.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 }
 
 
@@ -303,17 +303,17 @@ if (head("$url" . '/infernoshout.php')){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3/i or "$vbdd" =~ m/vBulletin Version 4.2.0/i or "$vbdd" =~ m/vBulletin Version 4.1.0/i or "$vbdd" =~ m/vBulletin Version 4/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3/i or "$vbdd" =~ m/vBulletin™ Version 4.2.0/i or "$vbdd" =~ m/vBulletin™ Version 4.1.0/i or "$vbdd" =~ m/vBulletin™ Version 4/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin Version 3.8.x'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBhV\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin Version 3.8.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 }
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4/i){
+if ("$vbdd" =~ m/vBulletin™ Version 4/i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] Flood User Exploit In '4.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiDEZ   /   http://adf.ly/1ZiDHJ\n" . color("reset");
@@ -323,12 +323,12 @@ if ("$vbdd" =~ m/vBulletin Version 4/i){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4/i or "$vbdd" =~ m/vBulletin Version 3/i){
+if ("$vbdd" =~ m/vBulletin™ Version 4/i or "$vbdd" =~ m/vBulletin™ Version 3/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] vBulletin Login Backdoor In 'vBulletin Version 3.x.x or 4.x.x'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] vBulletin Login Backdoor In 'vBulletin™ Version 3.x.x or 4.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiDjt\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : vBulletin Login Backdoor In 'vBulletin Version 3.x.x or 4.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : vBulletin Login Backdoor In 'vBulletin™ Version 3.x.x or 4.x.x'\n" . color("reset");
 }
 
 
@@ -346,7 +346,7 @@ if (head("$url" . '/misc.php')){
 $nvnum = $nvnum + 1;
 if (head("$url" . '/install/upgrade.php')){
 	$vnum = $vnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4/i or "$vbdd" =~ m/vBulletin Version 5/i){
+if ("$vbdd" =~ m/vBulletin™ Version 4/i or "$vbdd" =~ m/vBulletin™ Version 5/i){
 	print color("yellow") . "\a\n  [+] SQL-Injection In 'upgrade.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiEXA\n" . color("reset");
 }else{
@@ -355,7 +355,7 @@ if ("$vbdd" =~ m/vBulletin Version 4/i or "$vbdd" =~ m/vBulletin Version 5/i
 }
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.5/i and head("$url" . '/member.php')){
+if ("$vbdd" =~ m/vBulletin™ Version 3.5/i and head("$url" . '/member.php')){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'member.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : hhttp://adf.ly/1ZjDVb\n" . color("reset");
@@ -365,7 +365,7 @@ if ("$vbdd" =~ m/vBulletin Version 3.5/i and head("$url" . '/member.php')){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.7.0/i and head("$url" . '/faq.php')){
+if ("$vbdd" =~ m/vBulletin™ Version 3.7.0/i and head("$url" . '/faq.php')){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] SQL-Injection In 'faq.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjDqg\n" . color("reset");
@@ -385,33 +385,33 @@ if (head("$url" . '/vBTube.php')){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin Version 3.x.x'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin™ Version 3.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEFZ\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin Version 3.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin™ Version 3.x.x'\n" . color("reset");
 }
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.8.6/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3.8.6/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] Information Disclosur In 'vBulletin Version 3.8.6'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] Information Disclosur In 'vBulletin™ Version 3.8.6'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEfg\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : Information Disclosur In 'vBulletin Version 3.8.6'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Information Disclosur In 'vBulletin™ Version 3.8.6'\n" . color("reset");
 }
 
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.8.4/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3.8.4/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] File Include Vulnerability In 'vBulletin Version 3.8.4'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] File Include Vulnerability In 'vBulletin™ Version 3.8.4'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEpR\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : File Include Vulnerability In 'vBulletin Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : File Include Vulnerability In 'vBulletin™ Version 3.8.4'\n" . color("reset");
 }
 
 
@@ -427,22 +427,22 @@ if (head("$url" . '/radioandtv.php')){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 5.0.0 Beta/i){
+if ("$vbdd" =~ m/vBulletin™ Version 5.0.0 Beta/i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] SQL-Injection In 'vBulletin Version 5.0.0 Beta'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] SQL-Injection In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjFoC\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 }
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 5./i or "$vbdd" =~ m/vBulletin Version 4.1./i){
+if ("$vbdd" =~ m/vBulletin™ Version 5./i or "$vbdd" =~ m/vBulletin™ Version 4.1./i){
 	$vnum = $vnum + 1;
-	print color("yellow") . "\a\n  [+] Remote admin injection In 'vBulletin Version 4.1.x / 5.x.x'\n" . color("reset");
+	print color("yellow") . "\a\n  [+] Remote admin injection In 'vBulletin™ Version 4.1.x / 5.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjFwj\n" . color("reset");
 }else{
-	print color("red") . "\n  [-] Not Found : Remote admin injection In 'vBulletin Version 4.1.x / 5.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote admin injection In 'vBulletin™ Version 4.1.x / 5.x.x'\n" . color("reset");
 }
 
 
@@ -468,7 +468,7 @@ if (head("$url" . '/vbshout.php')){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4.1.12/i and head("$url" . '/includes/blog_plugin_useradmin.php')){
+if ("$vbdd" =~ m/vBulletin™ Version 4.1.12/i and head("$url" . '/includes/blog_plugin_useradmin.php')){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] Remote admin injection In 'blog_plugin_useradmin.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjK0O\n" . color("reset");
@@ -478,7 +478,7 @@ if ("$vbdd" =~ m/vBulletin Version 4.1.12/i and head("$url" . '/includes/blog_
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 3.8.4/i or "$vbdd" =~ m/vBulletin Version 3.8.5/i){
+if ("$vbdd" =~ m/vBulletin™ Version 3.8.4/i or "$vbdd" =~ m/vBulletin™ Version 3.8.5/i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] Registration Bypass Vulnerability In 'register.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKM1\n" . color("reset");
@@ -487,7 +487,7 @@ if ("$vbdd" =~ m/vBulletin Version 3.8.4/i or "$vbdd" =~ m/vBulletin Version
 }
 
 
-if ("$vbdd" =~ m/vBulletin Version 5.1./i){
+if ("$vbdd" =~ m/vBulletin™ Version 5.1./i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] RCE Exploit In 'v5.1.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKXh\n" . color("reset");
@@ -498,7 +498,7 @@ if ("$vbdd" =~ m/vBulletin Version 5.1./i){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4.2.1/i){
+if ("$vbdd" =~ m/vBulletin™ Version 4.2.1/i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] RCE Exploit In 'v5.1.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKjW\n" . color("reset");
@@ -509,7 +509,7 @@ if ("$vbdd" =~ m/vBulletin Version 4.2.1/i){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4.2.2/i){
+if ("$vbdd" =~ m/vBulletin™ Version 4.2.2/i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] CSRF Exploit In 'v4.2.2'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKss\n" . color("reset");
@@ -520,7 +520,7 @@ if ("$vbdd" =~ m/vBulletin Version 4.2.2/i){
 
 
 $nvnum = $nvnum + 1;
-if ("$vbdd" =~ m/vBulletin Version 4./i){
+if ("$vbdd" =~ m/vBulletin™ Version 4./i){
 	$vnum = $vnum + 1;
 	print color("yellow") . "\a\n  [+] SQL-Injection Exploit In 'v4.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKvi\n" . color("reset");
@@ -545,6 +545,9 @@ if (head("$url" . '/register.php')){
 
 
 
+
+
+
 # Backup Finder Request ^_^
 my $bbnum = "0";
 my $backreqq = "No";
@@ -554,29 +557,29 @@ my $backreq = <STDIN>;
 chomp($backreq);
 if ("$backreq" eq "y" or "$backreq" eq "Y" or "$backreq" eq "Yes" or "$backreq" eq "yes" or "$backreq" eq "YES" or "$backreq" eq ""){
 	$backreqq = "Yes";
-@configs = ('backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
-print "\n";
-foreach my $config (@configs){
-    if (head("$url/$config")) {
-    print color("yellow") . "\a    - File Found : $url/$config\n" . color("reset");
+@conbfigs = ('db.txt' , '/backup.tar.gz', '/backup/backup.tar.gz', '/backup/backup.zip', '/vb/backup.zip', '/site/backup.zip', '/backup.zip', '/backup.rar', '/backup.sql', '/vb/vb.zip', '/vb.zip', '/vb.sql', '/vb.rar', '/vb1.zip', '/vb2.zip', '/vbb.zip', '/vb3.zip', '/upload.zip', '/up/upload.zip', '/joomla.zip', '/joomla.rar', '/joomla.sql', '/wordpress.zip', '/wp/wordpress.zip', '/blog/wordpress.zip', '/wordpress.rar' , 'backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
+foreach my $backjup (@conbfigs){
+
+if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
+	my $skjdfhsdjkf = "sdajkfh";
+}else{
+    if (head("$url/$backjup")) {
+    print color("yellow") . "\a    - File Found : $url/$backjup\n" . color("reset");
     $bbnum = $bbnum + 1;
     }
 }
+}
 if ("$bbnum" eq "0"){
-	print color("red") . "  [-] Not Found Any Backup File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "  [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
-
-
-
-
 
 
 # Config Finder Request ^_^
@@ -588,30 +591,26 @@ my $conreq = <STDIN>;
 chomp($conreq);
 if ("$conreq" eq "y" or "$conreq" eq "Y" or "$conreq" eq "Yes" or "$conreq" eq "yes" or "$conreq" eq "YES" or "$conreq" eq ""){
 	$conreqq = "Yes";
-@cnconfigs = ('config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
+@cnconfigs = ('configuration.php' , 'configuration.php~' , 'configuration.php.new' , 'configuration.php.new~' , 'config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
 foreach $cnconfig(@cnconfigs){
-    $sourcsse=$ou->get("$url/includes/$cnconfig")->decoded_content;
-    if($sourcsse =~ m/admincpdir/i || $sourcsse =~ m/dbtype/i || $sourcsse =~ m/technicalemail/i){
+    $sourcsse=$ou->get("$url/$cnconfig")->decoded_content;
+    if(head("$url/$config") and $sourcsse =~ m/DB_NAME/i || $sourcsse =~ m/define/i || $sourcsse =~ m/\'\)\;/i || $sourcsse =~ m/\"\)\;/i){
     	print color("yellow") . "\a    - Config File Path : $url/includes/$cnconfig\n" . color("reset");
     	$ccnum = $ccnum + 1;
     }
 }
 if ("$ccnum" eq "0"){
-	print color("red") . "  [-] Not Found Any Config File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "  [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
-
-
-
-
 
 
 # Shell Finder Request ^_^
@@ -623,25 +622,116 @@ my $shreq = <STDIN>;
 chomp($shreq);
 if ("$shreq" eq "y" or "$shreq" eq "Y" or "$shreq" eq "Yes" or "$shreq" eq "yes" or "$shreq" eq "YES" or "$shreq" eq ""){
 	$shreqq = "Yes";
-@shells = ('config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
+@shells = ('c99.php' , '.c99.php' , 'wos.php' , 'wso.php' , '.wos.php' , '.wso.php' , '.r57.php' , 'r57.php' , 'sql.php' , '.sql.php' , 'shell.php' , '.shell.php');
 foreach $shell(@shells){
-    if(head("$url" . "/$shell")){
+    if(head("$url/$shell")){
     	print color("yellow") . "\a    - Shell File Path : $url/$shell\n" . color("reset");
     	$scnum = $scnum + 1;
     }
 }
 if ("$scnum" eq "0"){
-	print color("red") . "  [-] Not Found Any Shell File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "  [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
+
+
+
+
+
+# Subdomain Finder Request ^_^
+my $bsubnum = "0";
+my $subreqq = "No";
+if ("$url" =~ "https://"){
+	$url2 = substr($url, 8);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 8);
+	}
+}elsif ("$url" =~ "http://"){
+	$url2 = substr($url, 7);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 7);
+	}
+}
+while ("$subreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Subdomain-Finder ? [Y/n] : " . color("reset");
+my $subreq = <STDIN>;
+chomp($subreq);
+if ("$subreq" eq "y" or "$subreq" eq "Y" or "$subreq" eq "Yes" or "$subreq" eq "yes" or "$subreq" eq "YES" or "$subreq" eq ""){
+	$subreqq = "Yes";
+@subconfigs = ("www." , "about.", "abose.", "acme.", "ad.", "admanager.", "admin.", "admins.", "administrador.", "administrateur.", "administrator.", "ads.", "adsense.", "adult.", "adwords.", "affiliate.", "affiliatepage.", "afp.", "analytics.", "android.", "shop.", "echop.", "blog.", "tienda.", "answer.", "ap.", "api.", "apis.", "app.", "bank.", "blogs.", "client.", "clients.", "community.", "content.", "cpanel.", "dashbord.", "data.", "developer.", "developers.", "dl.", "docs.", "documents.", "download.", "downloads.", "encrypted.", "email.", "webmail.", "mail.", "correo.", "ftp.", "forum.", "forums.", "feed.", "feeds.", "file.", "files.", "gov.", "home.", "help.", "invoice.", "invoises.", "items.", "js.", "es.", "it.", "en.", "fr.", "ar.", "legal.", "iphone.", "lab.", "labs.", "list.", "lists.", "log.", "logs.", "errors.", "net.", "mysql.", "mysqldomain.", "net.", "network.", "news.", "ns.", "ns1.", "ns2.", "ns3.", "ns4.", "ns5.", "org.", "panel.", "partner.", "partners.", "pop.", "pop3.", "private.", "proxies.", "public.", "reports.", "root.", "rss.", "prod.", "prods.", "sandbox.", "search.", "server.", "servers.", "signin.", "signup.", "login.", "smtp.", "srntp.", "ssl.", "soap.", "stat.", "statics.", "store.", "status.", "survey.", "sync.", "system.", "text.", "test.", "webadmin.", "webdisk.", "xhtml.", "xhtrnl.", "xml.");
+print "\n";
+foreach my $subdodo (@subconfigs){
+	my $srt = $ou->get('http://' . "$subdodo$urlf")->decoded_content;
+    if (head('http://' . "$subdodo$urlf")) {
+    	if ("$srt" =~ "Access denied." or "$srt" =~ "404 Not Found"){
+    		my $rjdskhfg = "dfgjshd";
+    		}else{
+    print color("yellow") . "\a    - Subdomain Found : $subdodo$urlf\n" . color("reset");
+    $bsubnum = $bsubnum + 1;
+}
+    }
+}
+if ("$bsubnum" eq "0"){
+	print color("red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+}
+}elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
+		$subreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		$subreqq = "No";
+	}
+}
+
+
+
+
+
+
+
+
+# Upload Files Finder Request ^_^
+my $supum = "0";
+my $supupreqq = "No";
+while ("$supupreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Shell-Finder ? [Y/n] : " . color("reset");
+my $suprreq = <STDIN>;
+chomp($suprreq);
+if ("$suprreq" eq "y" or "$suprreq" eq "Y" or "$suprreq" eq "Yes" or "$suprreq" eq "yes" or "$suprreq" eq "YES" or "$suprreq" eq ""){
+	$supupreqq = "Yes";
+@uploadsp = ("/up.php", "/up1.php", "up/up.php", "/site/up.php", "/vb/up.php", "/forum/up.php", "/blog/up.php", "/upload.php", "/upload1.php", "/upload2.php", "/vb/upload.php", "/forum/upload.php", "blog/upload.php", "site/upload.php", "download.php");
+foreach $ups(@uploadsp){
+    if(head("$url/$ups")){
+    	print color("yellow") . "\a    - Upload File Path : $url/$ups\n" . color("reset");
+    	$supum = $supum + 1;
+    }
+}
+if ("$supum" eq "0"){
+	print color("red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+}
+
+}elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
+		$supupreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		$supupreqq = "No";
+	}
+}
+
+
 
 
 
@@ -655,18 +745,25 @@ if ("$vnum" eq "0"){
 	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
 }
 if ("$scnum" ne "0"){
-	print color("yellow") . "  [!] Shell Found : $scnum\n" . color("reset");
+	print color("yellow") . "  [-] Shell Found : $scnum\n" . color("reset");
 }
 
 if ("$ccnum" ne "0"){
-	print color("yellow") . "  [!] Config Found : $ccnum\n" . color("reset");
+	print color("yellow") . "  [-] Config Found : $ccnum\n" . color("reset");
 }
 
 if ("$bbnum" ne "0"){
-	print color("yellow") . "  [!] Backup Found : $bbnum\n" . color("reset");
+	print color("yellow") . "  [-] Backup Found : $bbnum\n" . color("reset");
+}
+
+if ("$bsubnum" ne "0"){
+	print color("yellow") . "  [-] Subdomain Found : $bsubnum\n" . color("reset");
 }
 
 
+if ("$supum" ne "0"){
+	print color("yellow") . "  [-] Upload Found : $supum\n" . color("reset");
+}
 
 
 return 1;
