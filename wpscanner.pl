@@ -47,22 +47,26 @@ my $backreq = <STDIN>;
 chomp($backreq);
 if ("$backreq" eq "y" or "$backreq" eq "Y" or "$backreq" eq "Yes" or "$backreq" eq "yes" or "$backreq" eq "YES" or "$backreq" eq ""){
 	$backreqq = "Yes";
-@configs = ('backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
-print "\n";
-foreach my $config (@configs){
-    if (head("$url/$config")) {
-    print color("yellow") . "\a\n    - File Found : $url/$config\n" . color("reset");
+@conbfigs = ('db.txt' , '/backup.tar.gz', '/backup/backup.tar.gz', '/backup/backup.zip', '/vb/backup.zip', '/site/backup.zip', '/backup.zip', '/backup.rar', '/backup.sql', '/vb/vb.zip', '/vb.zip', '/vb.sql', '/vb.rar', '/vb1.zip', '/vb2.zip', '/vbb.zip', '/vb3.zip', '/upload.zip', '/up/upload.zip', '/joomla.zip', '/joomla.rar', '/joomla.sql', '/wordpress.zip', '/wp/wordpress.zip', '/blog/wordpress.zip', '/wordpress.rar' , 'backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
+foreach my $backjup (@conbfigs){
+
+if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
+	my $skjdfhsdjkf = "sdajkfh";
+}else{
+    if (head("$url/$backjup")) {
+    print color("yellow") . "\a    - File Found : $url/$backjup\n" . color("reset");
     $bbnum = $bbnum + 1;
     }
 }
+}
 if ("$bbnum" eq "0"){
-	print color("red") . "\n  [-] Not Found Any Backup File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "\n  [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
@@ -81,30 +85,26 @@ my $conreq = <STDIN>;
 chomp($conreq);
 if ("$conreq" eq "y" or "$conreq" eq "Y" or "$conreq" eq "Yes" or "$conreq" eq "yes" or "$conreq" eq "YES" or "$conreq" eq ""){
 	$conreqq = "Yes";
-@cnconfigs = ('wp-config.php' , 'wp-config.php~' , 'wp-config.php.new' , 'wp-config.php.new~' , 'config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
+@cnconfigs = ('configuration.php' , 'configuration.php~' , 'configuration.php.new' , 'configuration.php.new~' , 'config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
 foreach $cnconfig(@cnconfigs){
     $sourcsse=$ou->get("$url/$cnconfig")->decoded_content;
-    if($sourcsse =~ m/ /i || $sourcsse =~ m/a/i || $sourcsse =~ m/\//i || $sourcsse =~ m/:/i){
-    	print color("yellow") . "\a\n    - Config File Path : $url/includes/$cnconfig\n" . color("reset");
+    if(head("$url/$config") and $sourcsse =~ m/DB_NAME/i || $sourcsse =~ m/define/i || $sourcsse =~ m/\'\)\;/i || $sourcsse =~ m/\"\)\;/i){
+    	print color("yellow") . "\a    - Config File Path : $url/includes/$cnconfig\n" . color("reset");
     	$ccnum = $ccnum + 1;
     }
 }
 if ("$ccnum" eq "0"){
-	print color("red") . "\n  [-] Not Found Any Readable Config File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "\n  [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
-
-
-
-
 
 
 # Shell Finder Request ^_^
@@ -116,22 +116,22 @@ my $shreq = <STDIN>;
 chomp($shreq);
 if ("$shreq" eq "y" or "$shreq" eq "Y" or "$shreq" eq "Yes" or "$shreq" eq "yes" or "$shreq" eq "YES" or "$shreq" eq ""){
 	$shreqq = "Yes";
-@shells = ('' , '' , '' , '');
+@shells = ('c99.php' , '.c99.php' , 'wos.php' , 'wso.php' , '.wos.php' , '.wso.php' , '.r57.php' , 'r57.php' , 'sql.php' , '.sql.php' , 'shell.php' , '.shell.php');
 foreach $shell(@shells){
     if(head("$url/$shell")){
-    	print color("yellow") . "\a\n    - Shell File Path : $url/$shell\n" . color("reset");
+    	print color("yellow") . "\a    - Shell File Path : $url/$shell\n" . color("reset");
     	$scnum = $scnum + 1;
     }
 }
 if ("$scnum" eq "0"){
-	print color("red") . "\n  [-] Not Found Any Shell File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("red") . "  [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
@@ -139,21 +139,125 @@ if ("$scnum" eq "0"){
 
 
 
+
+# Subdomain Finder Request ^_^
+my $bsubnum = "0";
+my $subreqq = "No";
+if ("$url" =~ "https://"){
+	$url2 = substr($url, 8);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 8);
+	}
+}elsif ("$url" =~ "http://"){
+	$url2 = substr($url, 7);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 7);
+	}
+}
+while ("$subreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Subdomain-Finder ? [Y/n] : " . color("reset");
+my $subreq = <STDIN>;
+chomp($subreq);
+if ("$subreq" eq "y" or "$subreq" eq "Y" or "$subreq" eq "Yes" or "$subreq" eq "yes" or "$subreq" eq "YES" or "$subreq" eq ""){
+	$subreqq = "Yes";
+@subconfigs = ("www." , "about.", "abose.", "acme.", "ad.", "admanager.", "admin.", "admins.", "administrador.", "administrateur.", "administrator.", "ads.", "adsense.", "adult.", "adwords.", "affiliate.", "affiliatepage.", "afp.", "analytics.", "android.", "shop.", "echop.", "blog.", "tienda.", "answer.", "ap.", "api.", "apis.", "app.", "bank.", "blogs.", "client.", "clients.", "community.", "content.", "cpanel.", "dashbord.", "data.", "developer.", "developers.", "dl.", "docs.", "documents.", "download.", "downloads.", "encrypted.", "email.", "webmail.", "mail.", "correo.", "ftp.", "forum.", "forums.", "feed.", "feeds.", "file.", "files.", "gov.", "home.", "help.", "invoice.", "invoises.", "items.", "js.", "es.", "it.", "en.", "fr.", "ar.", "legal.", "iphone.", "lab.", "labs.", "list.", "lists.", "log.", "logs.", "errors.", "net.", "mysql.", "mysqldomain.", "net.", "network.", "news.", "ns.", "ns1.", "ns2.", "ns3.", "ns4.", "ns5.", "org.", "panel.", "partner.", "partners.", "pop.", "pop3.", "private.", "proxies.", "public.", "reports.", "root.", "rss.", "prod.", "prods.", "sandbox.", "search.", "server.", "servers.", "signin.", "signup.", "login.", "smtp.", "srntp.", "ssl.", "soap.", "stat.", "statics.", "store.", "status.", "survey.", "sync.", "system.", "text.", "test.", "webadmin.", "webdisk.", "xhtml.", "xhtrnl.", "xml.");
+print "\n";
+foreach my $subdodo (@subconfigs){
+	my $srt = $ou->get('http://' . "$subdodo$urlf")->decoded_content;
+    if (head('http://' . "$subdodo$urlf")) {
+    	if ("$srt" =~ "Access denied." or "$srt" =~ "404 Not Found"){
+    		my $rjdskhfg = "dfgjshd";
+    		}else{
+    print color("yellow") . "\a    - Subdomain Found : $subdodo$urlf\n" . color("reset");
+    $bsubnum = $bsubnum + 1;
+}
+    }
+}
+if ("$bsubnum" eq "0"){
+	print color("red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+}
+}elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
+		$subreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		$subreqq = "No";
+	}
+}
+
+
+
+
+
+
+
+
+# Upload Files Finder Request ^_^
+my $supum = "0";
+my $supupreqq = "No";
+while ("$supupreqq" eq "No"){
+print color("green") . "\n  [~] Do You Want To Start Shell-Finder ? [Y/n] : " . color("reset");
+my $suprreq = <STDIN>;
+chomp($suprreq);
+if ("$suprreq" eq "y" or "$suprreq" eq "Y" or "$suprreq" eq "Yes" or "$suprreq" eq "yes" or "$suprreq" eq "YES" or "$suprreq" eq ""){
+	$supupreqq = "Yes";
+@uploadsp = ("/up.php", "/up1.php", "up/up.php", "/site/up.php", "/vb/up.php", "/forum/up.php", "/blog/up.php", "/upload.php", "/upload1.php", "/upload2.php", "/vb/upload.php", "/forum/upload.php", "blog/upload.php", "site/upload.php", "download.php");
+foreach $ups(@uploadsp){
+    if(head("$url/$ups")){
+    	print color("yellow") . "\a    - Upload File Path : $url/$ups\n" . color("reset");
+    	$supum = $supum + 1;
+    }
+}
+if ("$supum" eq "0"){
+	print color("red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+}
+
+}elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
+		$supupreqq = "Yes";
+	print "\n";
+	}else{
+		print color("red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		$supupreqq = "No";
+	}
+}
+
+
+
+
+
+
+
 if ("$vnum" eq "0"){
-	print color("yellow") , "   [!] Exploit Tested : $nvnum\n" , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
 	print color("red") , "  [-] Sorry Not Found." , color("reset");
 }else{
-	print color("yellow") , "   [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("yellow") , "   [!] Exploit Found  : $vnum\n\n" , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
+	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
 }
 if ("$scnum" ne "0"){
-	print color("red") . "  [-] Shell Found : $scnum\n" . color("reset");
+	print color("yellow") . "  [-] Shell Found : $scnum\n" . color("reset");
 }
 
 if ("$ccnum" ne "0"){
-	print color("red") . "  [-] Config Found : $ccnum\n" . color("reset");
+	print color("yellow") . "  [-] Config Found : $ccnum\n" . color("reset");
 }
 
 if ("$bbnum" ne "0"){
-	print color("red") . "  [-] Backup Found : $bbnum\n" . color("reset");
+	print color("yellow") . "  [-] Backup Found : $bbnum\n" . color("reset");
 }
+
+if ("$bsubnum" ne "0"){
+	print color("yellow") . "  [-] Subdomain Found : $bsubnum\n" . color("reset");
+}
+
+
+if ("$supum" ne "0"){
+	print color("yellow") . "  [-] Upload Found : $supum\n" . color("reset");
+}
+
+
+return 1;
