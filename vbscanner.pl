@@ -10,6 +10,7 @@ my $nvnum = "0";
 my $vnum = "0";
 
 
+
 # Check Htaccess
 my $htnum = "0";
 my @htac = ('.htaccess' , '.htaccess.txt' , 'htaccess' , 'htaccess.txt');
