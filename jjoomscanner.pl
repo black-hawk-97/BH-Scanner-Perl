@@ -10,9 +10,6 @@ my $nvnum = "0";
 my $url2 = "";
 
 
-
-
-
 open(j,"<$file") or die "$!";
 
 banner();
@@ -39,7 +36,7 @@ if ("$version" ne ""){
 	print color("green") , "   [+] Joomla Version Detected : $version\n" , color("reset");
 }else{
 	print color("green") , "\n   [+] Script : Joomla\n" . color("reset");
-	print color("on_red") , "   [-] Joomla Version Cannot Be Detected !!\n" , color("reset");
+	print "   " , color("on_red") , "[-] Joomla Version Cannot Be Detected !!\n" , color("reset");
 }
 
 
@@ -56,7 +53,7 @@ foreach	my $ht (@htac){
 	}
 }
 if ("$htnum" eq "0"){
-	print color("on_red") , "   [-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
+	print "   " , color("on_red") , "[-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
 }
 	
 	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
@@ -80,7 +77,7 @@ if ("$htnum" eq "0"){
 	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}else{
-	print color("on_red") , "   [-] Admin Panel Not Found !!\n" . color("reset");
+	print "   " , color("on_red") , "[-] Admin Panel Not Found !!\n" . color("reset");
 	}
 
 
@@ -101,6 +98,15 @@ if ("$joomsource" =~ "$fl"){
 	print color("yellow") , "\a   [+] Vuln. Plugin     : $fl\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : $tl\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
+
+
+open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+print RES '<h1><font color="red" size="5"> [+] URL : ' . "$url" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vuln. Plugin : ' . "$fl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
+close RES;
+
 	$vnum = $vnum + 1;
 }
 	$nvnum = $nvnum + 1;
@@ -123,11 +129,20 @@ while(<www>){
 	my $fol2 = "$fields2[3]";
 
 if (head("$url" . "$fl2")){
-	print color("yellow") , "\a   [+] URL              : $url\n" , color("reset");
-	print color("yellow") , "   [+] Script Installed : $fol2\n" , color("reset");
 	print color("yellow") , "   [+] Vuln. Plugin     : $fl2\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : $tl2\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : $sl2\n\n" , color("reset");
+
+
+open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+print RES '<h1><font color="red" size="5"> [+] URL : ' . "$url" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vuln. Plugin : ' . "$fl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
+print RES '<h1><font color="red" size="5"> [+] Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
+close RES;
+
+
+
 	$vnum = $vnum + 1;
 }
 
