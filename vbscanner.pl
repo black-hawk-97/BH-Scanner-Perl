@@ -21,7 +21,7 @@ foreach	my $ht (@htac){
 	}
 }
 if ("$htnum" eq "0"){
-	print color("on_red") , "   [-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
+	print color("red") , "   [-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
 }
 	
 	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
@@ -39,7 +39,7 @@ if ("$htnum" eq "0"){
 	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}else{
-	print color("on_red") , "   [-] Admin Panel Not Found !!\n" . color("reset");
+	print color("red") , "   [-] Admin Panel Not Found !!\n" . color("reset");
 	}
 
 
@@ -52,7 +52,7 @@ if ("$seovbsource" =~ m/do_securitytoken_replacement/i){
 	print color("yellow") . "\a\n  [+] Local File Include Explit In 'vbseo.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : /vbseo.php?vbseoembedd=1&vbseourl=./clientscript/vbulletin_global.js\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Local File Include In 'vbseo.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Local File Include In 'vbseo.php'\n" . color("reset");
 }
 
 
@@ -63,7 +63,7 @@ if ("$vbversource" =~ m/vBulletin® Version 3.8.4/i){
 	print color("yellow") . "\a\n  [+] Registration Bypass Vulnerability In 'vBulletin® Version 3.8.4' \n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgp1q\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'vBulletin® Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'vBulletin® Version 3.8.4'\n" . color("reset");
 }
 
 my $v1bversource = $ou->get("$url")->decoded_content;
@@ -73,7 +73,7 @@ if ("$v1bversource" =~ m/vBulletin® Version 3.8.5/i){
 	print color("yellow") . "\a\n  [+] Registration Bypass Vulnerability In 'vBulletin® Version 3.8.5'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgp1q\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'vBulletin® Version 3.8.5'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'vBulletin® Version 3.8.5'\n" . color("reset");
 }
 
 
@@ -84,7 +84,7 @@ if ("$rcefaqsource" =~ m/<l1574574l>/i){
 	print color("yellow") . "\a\n  [+] Remote Code Excution Vulnerability In 'faq.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : /faq.php?cmd=dir\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Remote Code Excution Vulnerability In 'faq.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote Code Excution Vulnerability In 'faq.php'\n" . color("reset");
 }
 
 
@@ -95,7 +95,7 @@ if (head($url . '/arcade.php?act=Arcade&do=stats&comment=a&s_id=1%27') && "$sqls
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'arcade.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : /arcade.php?act=Arcade&do=stats&comment=a&s_id=1{Inject_Here}\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection in 'arcade.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection in 'arcade.php'\n" . color("reset");
 }
 
 
@@ -107,7 +107,7 @@ if ("$rcevbtwo" =~ m/phpinfo\(\)/i or "$rcevbtwo" =~ m/phpinfo()/i){
 	print color("yellow") . "\a\n  [+] Remote Code Excution Vulnerability In 'ajax'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgq3j\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Ajax Remote Code Excution Vulnerability In 'ajax'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Ajax Remote Code Excution Vulnerability In 'ajax'\n" . color("reset");
 }
 
 
@@ -118,7 +118,7 @@ if ($chkvbvb->content =~ /CUSTNUMBER = \"(.+)\";/){
 	print color("yellow") . "\a\n  [+] Remote Admin Injection Exploit In 'upgrade.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZgqmC\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Remote Admin Injection Vulnerability In 'upgrade.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote Admin Injection Vulnerability In 'upgrade.php'\n" . color("reset");
 }
 
 
@@ -129,7 +129,7 @@ if ("$vbdd" =~ m/vBulletin® Version 3.8.6/i){
 	print color("yellow") . "\a\n  [+] Information Disclosure Vulnerability In 'vBulletin® Version 3.8.6'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZgrPV\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Information Disclosure Vulnerability In 'vBulletin® Version 3.8.6'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Information Disclosure Vulnerability In 'vBulletin® Version 3.8.6'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -138,7 +138,7 @@ if ("$vbdd" =~ m/vBulletin version 5.1/i){
 	print color("yellow") . "\a\n  [+] Remote Code Execution Exploit In 'vBulletin version 5.1'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZguwU\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Remote Code Execution Exploit In 'vBulletin version 5.1'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote Code Execution Exploit In 'vBulletin version 5.1'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -147,7 +147,7 @@ if ("$vbdd" =~ m/vBulletin Version 5.1.2/i){
 	print color("yellow") . "\a\n  [+] SQL Injection Exploit 0day In 'vBulletin version 5.1.2'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZgvCI\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL Injection Exploit 0day In 'vBulletin version 5.1.2'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL Injection Exploit 0day In 'vBulletin version 5.1.2'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -156,7 +156,7 @@ if ("$vbdd" =~ m/vBulletin Version 3.8.4/i){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgw33\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -165,7 +165,7 @@ if ("$vbdd" =~ m/vBulletin® Version 3.8.4/i){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin® Version 3.8.4'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgw33\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin® Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin® Version 3.8.4'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -174,7 +174,7 @@ if ("$vbdd" =~ m/vBulletin Version 3.8.4/i){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgw33\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin Version 3.8.4'\n" . color("reset");
 }
 
 
@@ -184,7 +184,7 @@ if (head("$url" . "/search.php?search_type=1")){
 	print color("yellow") . "\a\n  [+] SQL Injection Exploit In 'search.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZgwK8   /   http://adf.ly/1Zk7AD\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'search.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'search.php'\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -193,7 +193,7 @@ if (head("$url" . "/search.php") or "$vbdd" =~ m/vBulletin Version 4.0./i){
 	print color("yellow") . "\a\n  [+] SQL Injection Exploit In 'search.php v4.0.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zna6u\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'search.php v4.0.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'search.php v4.0.x'\n" . color("reset");
 }
 
 
@@ -203,7 +203,7 @@ if ("$vbdd" =~ m/vBulletin Version 4.1.0/i or "$vbdd" =~ m/vBulletin Version 4.1
 	print color("yellow") . "\a\n  [+] SQL Injection Vulnerability In 'vBulletin Version 4.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZgyH4\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin Version 4.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin Version 4.x.x'\n" . color("reset");
 }
 
 
@@ -215,7 +215,7 @@ if ("$xssvb" =~ m/\<script\>alert\(127543\);\<\/script\>/i){
 	print color("yellow") . "\a\n  [+] Cross Site Scripting Vulnerability In 'xperience.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgrjf\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Xss In 'xperience.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Xss In 'xperience.php'\n" . color("reset");
 }
 
 
@@ -227,10 +227,10 @@ if (head("$url/clientscript/yui/uploader/assets/uploader.swf")){
 	print color("yellow") . "\a\n  [+] vBulletin YUI 2.9.0 Cross Site Scripting In 'uploader.swf'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgs4C\n" . color("reset");
 	}else{
-	print color("on_red") . "\n  [-] Not Found : Xss In 'uploader.swf'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Xss In 'uploader.swf'\n" . color("reset");
 }
 }else{
-	print color("on_red") . "\n  [-] Not Found : Xss In 'uploader.swf\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Xss In 'uploader.swf\n" . color("reset");
 }
 
 
@@ -242,7 +242,7 @@ if ("$vbc99xml" =~ m/c99shell/i || "$vbc99xml" =~ m/shell/i){
 	print color("yellow") . "\a\n  [+] C99 Shell Found\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : /admincp/subscriptions.php?do=api\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found C99 Shell !!\n" . color("reset");
+	print color("red") . "\n  [-] Not Found C99 Shell !!\n" . color("reset");
 }
 
 
@@ -252,7 +252,7 @@ if ("$cpfinder" =~ m/Admin Control Panel/i || "$cpfinder" =~ m/form action="..\/
 	$vnum = $vnum + 1;
     	print color("yellow") . "\a\n  [+] Admin Panel Found : $url/admincp\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found Admin Panel !!\n" . color("reset");
+	print color("red") . "\n  [-] Not Found Admin Panel !!\n" . color("reset");
 }
 
 $nvnum = $nvnum + 1;
@@ -261,7 +261,7 @@ if ("$modcpfinder" =~ m/Moderator Control Panel/i || "$modcpfinder" =~ m/form ac
 	$vnum = $vnum + 1;
     	print color("yellow") . "\a\n  [+] Modcp Admin Panel Found : $url/modcp\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found Moderator Control Panel !!\n" . color("reset");
+	print color("red") . "\n  [-] Not Found Moderator Control Panel !!\n" . color("reset");
 }
 
 
@@ -271,7 +271,7 @@ if (head("$url/vbseocp.php")){
 	print color("yellow") . "\a\n  [+] Remote PHP Code Injection Exploit In 'vbseocp.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1Zgu7o\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found Remote PHP Code Injection Exploit In 'vbseocp.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found Remote PHP Code Injection Exploit In 'vbseocp.php'\n" . color("reset");
 }
 
 
@@ -281,7 +281,7 @@ if (head("$url/visitormessage.php")){
 	print color("yellow") . "\a\n  [+] Remote Code Injection Vulnerability In 'visitormessage.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZguMb\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found Remote Code Injection Vulnerability In 'visitormessage.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found Remote Code Injection Vulnerability In 'visitormessage.php'\n" . color("reset");
 }
 
 
@@ -291,7 +291,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 5.0.0 Beta/i){
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiARm  /  http://adf.ly/1ZiAZt\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 }
 
 
@@ -301,7 +301,7 @@ if (head("$url" . '/ajax.php?do=inforum&result=10&listforumid=1')){
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'ajax.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiB4M\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'ajax.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'ajax.php'\n" . color("reset");
 }
 
 
@@ -312,7 +312,7 @@ if (head("$url" . '/install/install.php')){
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'vBulletin™ Version 4.1.2'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBTT\n" . color("reset");
 	}else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	}
 }
 
@@ -323,7 +323,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.8/i){
 	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBhV\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 }
 
 
@@ -333,7 +333,7 @@ if (head("$url" . '/infernoshout.php')){
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'infernoshout.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiCFj\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'infernoshout.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'infernoshout.php'\n" . color("reset");
 }
 
 
@@ -343,7 +343,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3/i or "$vbdd" =~ m/vBulletin™ Version 4
 	print color("yellow") . "\a\n  [+] MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiBhV\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : MySql Inject To Shell  In 'vBulletin™ Version 3.8.x'\n" . color("reset");
 }
 
 
@@ -353,7 +353,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4/i){
 	print color("yellow") . "\a\n  [+] Flood User Exploit In '4.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiDEZ   /   http://adf.ly/1ZiDHJ\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Flood User Exploit In '4.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Flood User Exploit In '4.x.x'\n" . color("reset");
 }
 
 
@@ -363,7 +363,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4/i or "$vbdd" =~ m/vBulletin™ Version 3
 	print color("yellow") . "\a\n  [+] vBulletin Login Backdoor In 'vBulletin™ Version 3.x.x or 4.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiDjt\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : vBulletin Login Backdoor In 'vBulletin™ Version 3.x.x or 4.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : vBulletin Login Backdoor In 'vBulletin™ Version 3.x.x or 4.x.x'\n" . color("reset");
 }
 
 
@@ -374,7 +374,7 @@ if (head("$url" . '/misc.php')){
 	print color("yellow") . "\a\n  [+] SQL-Injection Vulnerability In 'misc.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : $url/misc.php?do=music_full­&id=[Sqli_here]\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'misc.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Vulnerability In 'misc.php'\n" . color("reset");
 }
 
 
@@ -385,7 +385,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4/i or "$vbdd" =~ m/vBulletin™ Version 5
 	print color("yellow") . "\a\n  [+] SQL-Injection In 'upgrade.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZiEXA\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'upgrade.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'upgrade.php'\n" . color("reset");
 }
 }
 
@@ -395,7 +395,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.5/i and head("$url" . '/member.php')){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'member.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : hhttp://adf.ly/1ZjDVb\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'member.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'member.php'\n" . color("reset");
 }
 
 
@@ -405,7 +405,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.7.0/i and head("$url" . '/faq.php')){
 	print color("yellow") . "\a\n  [+] SQL-Injection In 'faq.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjDqg\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'faq.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'faq.php'\n" . color("reset");
 }
 
 
@@ -415,7 +415,7 @@ if (head("$url" . '/vBTube.php')){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBTube.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjE9W\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBTube.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBTube.php'\n" . color("reset");
 }
 
 
@@ -425,7 +425,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3/i){
 	print color("yellow") . "\a\n  [+] Cross-Site Scripting In 'vBulletin™ Version 3.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEFZ\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin™ Version 3.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Cross-Site Scripting In 'vBulletin™ Version 3.x.x'\n" . color("reset");
 }
 
 
@@ -435,7 +435,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.8.6/i){
 	print color("yellow") . "\a\n  [+] Information Disclosur In 'vBulletin™ Version 3.8.6'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEfg\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Information Disclosur In 'vBulletin™ Version 3.8.6'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Information Disclosur In 'vBulletin™ Version 3.8.6'\n" . color("reset");
 }
 
 
@@ -446,7 +446,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.8.4/i){
 	print color("yellow") . "\a\n  [+] File Include Vulnerability In 'vBulletin™ Version 3.8.4'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjEpR\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : File Include Vulnerability In 'vBulletin™ Version 3.8.4'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : File Include Vulnerability In 'vBulletin™ Version 3.8.4'\n" . color("reset");
 }
 
 
@@ -457,7 +457,7 @@ if (head("$url" . '/radioandtv.php')){
 	print color("yellow") . "\a\n  [+] XSS/Redirect/Iframe-Injection In 'Radio and TV Player Add-On'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjF0G\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : XSS/Redirect/Iframe-Injection In 'Radio and TV Player Add-On'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : XSS/Redirect/Iframe-Injection In 'Radio and TV Player Add-On'\n" . color("reset");
 }
 
 
@@ -467,7 +467,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 5.0.0 Beta/i){
 	print color("yellow") . "\a\n  [+] SQL-Injection In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjFoC\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection In 'vBulletin™ Version 5.0.0 Beta'\n" . color("reset");
 }
 
 
@@ -477,7 +477,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 5./i or "$vbdd" =~ m/vBulletin™ Version 
 	print color("yellow") . "\a\n  [+] Remote admin injection In 'vBulletin™ Version 4.1.x / 5.x.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjFwj\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Remote admin injection In 'vBulletin™ Version 4.1.x / 5.x.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote admin injection In 'vBulletin™ Version 4.1.x / 5.x.x'\n" . color("reset");
 }
 
 
@@ -487,7 +487,7 @@ if (head("$url" . '/usertag.php')){
 	print color("yellow") . "\a\n  [+] Stored XSS Vulnerability In 'usertag.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjG9z\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Stored XSS Vulnerability In 'usertag.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Stored XSS Vulnerability In 'usertag.php'\n" . color("reset");
 }
 
 
@@ -497,7 +497,7 @@ if (head("$url" . '/vbshout.php')){
 	print color("yellow") . "\a\n  [+] Stored XSS Vulnerability In 'vbshout.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjGF9\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Stored XSS Vulnerability In 'vbshout.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Stored XSS Vulnerability In 'vbshout.php'\n" . color("reset");
 }
 
 
@@ -508,7 +508,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4.1.12/i and head("$url" . '/includes/blog
 	print color("yellow") . "\a\n  [+] Remote admin injection In 'blog_plugin_useradmin.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjK0O\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Remote admin injection In 'blog_plugin_useradmin.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Remote admin injection In 'blog_plugin_useradmin.php'\n" . color("reset");
 }
 
 
@@ -518,7 +518,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 3.8.4/i or "$vbdd" =~ m/vBulletin™ Versi
 	print color("yellow") . "\a\n  [+] Registration Bypass Vulnerability In 'register.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKM1\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'register.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : Registration Bypass Vulnerability In 'register.php'\n" . color("reset");
 }
 
 
@@ -527,7 +527,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 5.1./i){
 	print color("yellow") . "\a\n  [+] RCE Exploit In 'v5.1.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKXh\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : RCE Exploit In 'v5.1.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : RCE Exploit In 'v5.1.x'\n" . color("reset");
 }
 
 
@@ -538,7 +538,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4.2.1/i){
 	print color("yellow") . "\a\n  [+] RCE Exploit In 'v5.1.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKjW\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : RCE Exploit In 'v5.1.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : RCE Exploit In 'v5.1.x'\n" . color("reset");
 }
 
 
@@ -549,7 +549,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4.2.2/i){
 	print color("yellow") . "\a\n  [+] CSRF Exploit In 'v4.2.2'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKss\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : CSRF Exploit In 'v4.2.2'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : CSRF Exploit In 'v4.2.2'\n" . color("reset");
 }
 
 
@@ -560,7 +560,7 @@ if ("$vbdd" =~ m/vBulletin™ Version 4./i){
 	print color("yellow") . "\a\n  [+] SQL-Injection Exploit In 'v4.x'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjKvi\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Exploit In 'v4.x'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Exploit In 'v4.x'\n" . color("reset");
 }
 
 
@@ -570,7 +570,7 @@ if (head("$url" . '/register.php')){
 	print color("yellow") . "\a\n  [+] SQL-Injection Exploit In 'register.php'\n" . color("reset");
 	print color("yellow") . "  [+] Exploit : http://adf.ly/1ZjL7h\n" . color("reset");
 }else{
-	print color("on_red") . "\n  [-] Not Found : SQL-Injection Exploit In 'register.php'\n" . color("reset");
+	print color("red") . "\n  [-] Not Found : SQL-Injection Exploit In 'register.php'\n" . color("reset");
 }
 	$nvnum = $nvnum + 1;
 	$vnum = $vnum + 1;
@@ -605,13 +605,13 @@ if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
 }
 }
 if ("$bbnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
@@ -635,14 +635,14 @@ foreach $cnconfig(@cnconfigs){
     }
 }
 if ("$ccnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Config File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
@@ -665,14 +665,14 @@ foreach $shell(@shells){
     }
 }
 if ("$scnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
@@ -719,13 +719,13 @@ foreach my $subdodo (@subconfigs){
     }
 }
 if ("$bsubnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
 }
 }elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
 		$subreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
 		$subreqq = "No";
 	}
 }
@@ -754,14 +754,14 @@ foreach $ups(@uploadsp){
     }
 }
 if ("$supum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+	print color("red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
 }
 
 }elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
 		$supupreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		print color("red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
 		$supupreqq = "No";
 	}
 }
@@ -774,7 +774,7 @@ if ("$supum" eq "0"){
 
 if ("$vnum" eq "0"){
 	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("on_red") , "  [-] Sorry Not Exploit Found." , color("reset");
+	print color("red") , "  [-] Sorry Not Exploit Found." , color("reset");
 }else{
 	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
 	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
