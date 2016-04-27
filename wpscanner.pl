@@ -18,7 +18,7 @@ print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minut
 
 # Clear Last Result
 my $htmlfile = $ou->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/htmlfile.txt")->decoded_content;
-open(HTML , '>' . "Result/Black-Hawk.html")
+open(HTML , '>' . "Result/Black-Hawk.html");
 print HTML "$htmlfile";
 close HTML;
 
