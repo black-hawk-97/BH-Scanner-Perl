@@ -224,7 +224,7 @@ exit 0;
 	$whilereq = "YES";
 
 }else{
-	print color("on_red") . "  [-] Command '$upreq' Not Found !!\n" . color("reset");
+	print color("red") . "  [-] Command '$upreq' Not Found !!\n" . color("reset");
 	$whilereq = "NO";
 
 }
@@ -257,21 +257,21 @@ if ("$ARGV[0]" eq "-u" or "$ARGV[0]" eq "--url"){
 
 if (!defined($ARGV[1])){
 	help();
-	print color("on_red") . "   [-] Please Choose The Target !!\n" . color("reset");
+	print color("red") . "   [-] Please Choose The Target !!\n" . color("reset");
 	exit 1;
 }
 
 
 if (!defined($ARGV[2])){
 	help();
-	print color("on_red") . "   [-] Please Use '-s' Option !!\n" . color("reset");
+	print color("red") . "   [-] Please Use '-s' Option !!\n" . color("reset");
 	exit 1;
 }
 
 
 if (!defined($ARGV[3])){
 	help();
-	print color("on_red") . "   [-] Please Type The Script Of The Site !!\n" . color("reset");
+	print color("red") . "   [-] Please Type The Script Of The Site !!\n" . color("reset");
 	exit 1;
 }
 
@@ -306,6 +306,6 @@ elsif ("$scrt" eq 'Joom'){
 require 'grabber/joomscanner.pl';
 }else{
 	help();
-	print color("on_red") . "  [+] '$scrt' Is Not Support !!\n" . color("reset");
+	print color("red") . "  [+] '$scrt' Is Not Support !!\n" . color("reset");
 	exit 1;
 }
