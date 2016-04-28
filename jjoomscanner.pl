@@ -22,11 +22,30 @@ if (chop($url) ne "/"){
 }
 
 
-# Clear Last Result
+# Create Result File
+if ("$url" =~ "https://"){
+	$url2 = substr($url, 8);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 8);
+	}
+}elsif ("$url" =~ "http://"){
+	$url2 = substr($url, 7);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 7);
+	}
+}
+my $surl = "$urlf";
+$surl =~ s/\///g;
 my $htmlfile = $ou->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/htmlfile.txt")->decoded_content;
-open(HTML , '>' . "Result/Black-Hawk.html");
-print HTML "$htmlfile";
-close HTML;
+chomp($surl);
+open (FFFF,">" . "Result/$surl.html");
+print FFFF "$htmlfile";
+
+
 
 
 # Checking Joomla Version
@@ -41,13 +60,127 @@ my $version = "";
 $version = $fidfelds[0];
 
 if ("$version" ne ""){
-	print color("green") , "\n   [+] Script : Joomla\n" . color("reset");
+	print color("green") , "\n   [+] Script-Type : Joomla\n" . color("reset");
 	print color("green") , "   [+] Joomla Version Detected : $version\n" , color("reset");
 }else{
 	print color("green") , "\n   [+] Script : Joomla\n" . color("reset");
 	print "   " , color("on_red") , "[-] Joomla Version Cannot Be Detected !!\n" , color("reset");
 }
 
+
+
+
+
+	# Check Headers Valiables
+	my $cleartext = $ou->get($url);
+	my $headersss = $cleartext->headers_as_string;
+	my $headerpow = $cleartext->headers_as_string;
+	my $headerser = $cleartext->headers_as_string;
+	$headerpow =~ m/X-Powered-By: (.*)/;
+	# grep Some Headers
+	if ("$headerpow" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect X-Powered-By !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] X-Powered-By : $1\n" . color("reset");
+	}
+
+	$headerser =~ m/Server: (.*)/;
+	if ("$headerser" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect Server Name !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] Server : $1\n" . color("reset");
+	}
+
+	$headercon =~ m/Content-Type: (.*)/;
+	if ("$headercon" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect Content-Type !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] Content-Type : $1\n" . color("reset");
+	}
+
+	if ( "$headersss" =~ "Set-Cookie:"){
+		print color("green") , "   [+] Passwords Are Passing Through None-Encrypt HTTP [You Can Sniffing Users Password].\n" . color("reset");
+	}else{
+		print "   " , color("on_red") , "[-] The Passwords Are Passing Through Encrypt Channel.\n" . color("reset");
+	}
+
+
+
+
+
+	# Check Firewall Status
+	if (head("$url/components/com_rsfirewall/") or head("$url/components/com_firewall/")){
+		print "   " , color("on_red") , "[!] RS-Firewall Firewall Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  Your Scanning Process Maybe Will Be Loged And Protected.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] RS-Firewall Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall2 Status
+	if (head("$url/components/com_jfw/") or head("$url/components/com_jfirewall/")){
+		print "   " , color("on_red") , "[!] J-Firewall Firewall Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  Your Scanning Process Maybe Will Be Loged And Protected.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] J-Firewall Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall3 Status
+	if (head("$url/modules/mod_securelive/") or head("$url/components/com_securelive/")){
+		print "   " , color("on_red") , "[!] (Mod_SecureLive/Com_SecureLive) Firewall Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  Your Scanning Process Maybe Will Be Loged And Protected.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] (Mod_SecureLive/Com_SecureLive) Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall4 Status
+	my $sourcehrad = $ou->get("$url")->decoded_content;
+	if (head("$url/init.php") or head("$url/firewall.php") or head("$url/fsAdmin/") or head("$url/fsAdmin/") or head("$url/fsadmin/") or "$sourcehrad" =~ /<div id='fws\-copyright'><a href='http:\/\/firewallscript\.com'>Protected by FireWall Script<\/a><\/div>/){
+		print "   " . color("on_red") , "[!] SecureLive Firewall Detected\n" . color("reset");
+		print "     " . color("yellow") , "-  Your Scanning Process Maybe Will Be Loged And Protected.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] SecureLive Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall5 Status
+	if (head("$url/plugins/system/jsecure.xml") or head("$url/plugins/system/jsecure.php")){
+		print "   " , color("on_red") , "[!] jSecure Authentication Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  You need additional secret key to access /administrator directory.\n" . color("reset");		
+		print "     " , color("yellow") , "-  Default is jSecure like /administrator/?jSecure ;)\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] jSecure Authentication Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall6 Status
+	if (head("$url/components/com_guardxt/") or head("$url/administrator/components/com_guardxt/")){
+		print "   " , color("on_red") , "[!] GuardXT Security Component Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  It Is Likely That Webmaster Routinely Checks For Insecurities.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] GuardXT Security Component Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall7 Status
+		my $sourcefire7 = $ou->get ("$url/?tell_me_if_antihacker_exist=1%20and%201=2")->decoded_content;
+		my $sourcefire27 = $ou->get("$url/index.php?option=com_phpantihacker")->decoded_content;
+	if ("$sourcefire7" =~ /Banned:\ssuspicious\shacking\sbehaviour/gi or "$sourcefire27" =~ /Banned:\ssuspicious\shacking\sbehaviour/gi){
+		print "   " , color("on_red") , "[!] Anti-Hacker Joomla Component Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  The vulnerability probing may be denied.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] Anti-Hacker Joomla Component Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall8 Status
+	if (head("$url/components/com_jdefender/") or head("$url/administrator/components/com_jdefender/") or head("$url/administrator/language/en-GB/en-GB.com_jdefender.ini")){
+		print "   " , color("on_red") , "[!] Joomla! JoomSuite Defender Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  The vulnerability probing may be logged and protected.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] Joomla! JoomSuite Defender Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall10 Status
+	if (head("$url/components/com_securityscan/") or head("$url/administrator/components/com_securityscanner/") or head("$url/components/com_securityscanner/")){
+		print "   " , color("on_red") , "[!] security scanner (com_securityscanner/com_securityscan) Detected\n" . color("reset");
+	}else{
+		print color("green") , "   [+] security scanner (com_securityscanner/com_securityscan) Does Not Found.\n" . color("reset");
+	}
+	# Check Firewall11 Status
+	if (head("$url/components/com_joomscan/") or head("$url/administrator/components/com_joomscan/") or head("$url/administrator/components/com_joomlascan/") or head("$url/components/com_joomlascan/")){
+		print "   " , color("on_red") , "[!] Joomla! security scanner (com_joomscan/com_joomlascan) Detected\n" . color("reset");
+		print "     " , color("yellow") , "-  It Is Likely That Webmaster Routinely Checks For Insecurities.\n" . color("reset");		
+	}else{
+		print color("green") , "   [+] Joomla! security scanner (com_joomscan/com_joomlascan) Does Not Found.\n" . color("reset");
+	}
 
 
 
@@ -65,6 +198,9 @@ if ("$htnum" eq "0"){
 	print "   " , color("on_red") , "[-] Htaccess File Not Avalible Or Not Readable !!\n" , color("reset");
 }
 	
+
+
+	# Admin Panel Finder
 	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
 	if (head("$url/robots.txt") and "$srobots" =~ "User-agent:" or "$srobots" =~ "User-agent:" or "$srobots" =~ "Disallow:"){
 	print color("green") , "   [+] Robots File Found At : $url/robots.txt\n" . color("reset");
@@ -72,22 +208,28 @@ if ("$htnum" eq "0"){
 	}
 
 	if (head("$url/administrator")){
-	print color("green") , "   [+] Admin Panel Found At : $url/administrtator/\n" . color("reset");
-	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("green") , "   [+] Admin Panel Found At : $url/administrator/\n" . color("reset");
+	print color("yellow") , "    -  The Attacker Can Do Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 	elsif (head("$url/admin")){
 	print color("green") , "   [+] Admin Panel Found At : $url/admin/\n" . color("reset");
-	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("yellow") , "    -  The Attacker Can Do Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
 	elsif (head("$url/manage")){
 	print color("green") , "   [+] Admin Panel Found At : $url/manage/\n" . color("reset");
-	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
+	print color("yellow") , "    -  The Attacker Can Do Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}else{
 	print "   " , color("on_red") , "[-] Admin Panel Not Found !!\n" . color("reset");
 	}
+
+
+
+
+
+
 
 
 
@@ -109,7 +251,7 @@ if ("$joomsource" =~ "$fl"){
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
 
 
-open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+open(RES , '>>' . 'Result/$surl.html') or die "$!";
 print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
@@ -338,7 +480,7 @@ if ("$bsubnum" eq "0"){
 my $supum = "0";
 my $supupreqq = "No";
 while ("$supupreqq" eq "No"){
-print color("cyan") . "\n  [~] Do You Want To Start Shell-Finder ? [Y/n] : " . color("reset");
+print color("cyan") . "\n  [~] Do You Want To Start Upload-Finder ? [Y/n] : " . color("reset");
 my $suprreq = <STDIN>;
 chomp($suprreq);
 if ("$suprreq" eq "y" or "$suprreq" eq "Y" or "$suprreq" eq "Yes" or "$suprreq" eq "yes" or "$suprreq" eq "YES" or "$suprreq" eq ""){
