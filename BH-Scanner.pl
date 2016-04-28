@@ -5,6 +5,7 @@
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
+use strict;
 
 my $url = "";
 my $ou = new LWP::UserAgent;
@@ -291,14 +292,14 @@ banner();
 print color("green") . "\n   [~] Scanning Site...          [ This May Take Few Minutes ] \n" . color("reset");
 
 if ("$scrt" eq 'VB'){
-	print color("green") . "\n  [+] Target : $url\n" . color("reset");
-	print color("green") . "  [+] Script : vBulletin\n" . color("reset");
+	print color("green") . "\n   [+] Target : $url\n" . color("reset");
+	print color("green") . "   [+] Script : vBulletin\n" . color("reset");
 require 'grabber/vbscanner.pl';
 }
 
 elsif ("$scrt" eq 'WP'){
-	print color("green") . "\n  [+] Target : $url\n" . color("reset");
-	print color("green") . "  [+] Script : Wordpress\n" . color("reset");
+	print color("green") . "\n   [+] Target : $url\n" . color("reset");
+	print color("green") . "   [+] Script : Wordpress\n" . color("reset");
 require 'grabber/wpscanner.pl';
 }
 
