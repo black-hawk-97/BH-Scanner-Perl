@@ -16,12 +16,65 @@ print color("green") , "\n   [+] Scanning ...          [ This May Take Few Minut
 
 
 
-# Clear Last Result
+# Create Result File
+if ("$url" =~ "https://"){
+	$url2 = substr($url, 8);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 8);
+	}
+}elsif ("$url" =~ "http://"){
+	$url2 = substr($url, 7);
+	if ("$url2" =~ "www"){
+	$urlf = substr($url2, 4);
+	}else{
+	$urlf = substr($url, 7);
+	}
+}
+my $surl = "$urlf";
+$surl =~ s/\///g;
 my $htmlfile = $ou->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/htmlfile.txt")->decoded_content;
-open(HTML , '>' . "Result/Black-Hawk.html");
-print HTML "$htmlfile";
-close HTML;
+chomp($surl);
+open (FFFF,">" . "Result/$surl.html");
+print FFFF "$htmlfile";
 
+
+
+	print color("green") , "\n   [+] Script-Type : Wordpress\n" . color("reset");
+
+	# Check Headers Valiables
+	my $cleartext = $ou->get($url);
+	my $headersss = $cleartext->headers_as_string;
+	my $headerpow = $cleartext->headers_as_string;
+	my $headerser = $cleartext->headers_as_string;
+	$headerpow =~ m/X-Powered-By: (.*)/;
+	# grep Some Headers
+	if ("$headerpow" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect X-Powered-By !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] X-Powered-By : $1\n" . color("reset");
+	}
+
+	$headerser =~ m/Server: (.*)/;
+	if ("$headerser" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect Server Name !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] Server : $1\n" . color("reset");
+	}
+
+	$headercon =~ m/Content-Type: (.*)/;
+	if ("$headercon" eq ""){
+	print "   " , color("on_red") , "[-] Cannot Detect Content-Type !!\n" . color("reset");
+	}else{
+	print color("green") , "   [+] Content-Type : $1\n" . color("reset");
+	}
+
+	if ( "$headersss" =~ "Set-Cookie:"){
+		print color("green") , "   [+] Passwords Are Passing Through None-Encrypt HTTP [You Can Sniffing Users Password].\n" . color("reset");
+	}else{
+		print "   " , color("on_red") , "[-] The Passwords Are Passing Through Encrypt Channel.\n" . color("reset");
+	}
 
 
 
@@ -46,7 +99,7 @@ if ("$htnum" eq "0"){
 	}
 
 	if (head("$url/wp-admin")){
-	print color("green") , "   [+] Admin Panel Found At : $url/administrtator/\n" . color("reset");
+	print color("green") , "   [+] Admin Panel Found At : $url/wp-admin/\n" . color("reset");
 	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}
@@ -56,7 +109,7 @@ if ("$htnum" eq "0"){
 	$htnum = $htnum + 1;
 	}
 	elsif (head("$url/wp-login.php")){
-	print color("green") , "   [+] Admin Panel Found At : $url/manage/\n" . color("reset");
+	print color("green") , "   [+] Admin Panel Found At : $url/wp-login.php/\n" . color("reset");
 	print color("yellow") , "    -  The Attacker Can make Bruteforce Attack Easly\n" . color("reset");	
 	$htnum = $htnum + 1;
 	}else{
@@ -84,7 +137,7 @@ if (head("$url" . "$fl")){
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
 
 
-open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+open(RES , '>>' . 'Result/$surl.html') or die "$!";
 print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
