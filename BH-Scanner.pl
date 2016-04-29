@@ -216,14 +216,14 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 	print sverrrTTTFILE "$ver";
 	close sverrrTTTFILE;
 
-
-
-print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
-exit 0;
+	print color("green") . "   [+] Cool , Updated Done.\n" . color("reset");
+	print color("green") . "   [!] Restarting The Script...\n" . color("reset");
+	sleep 2;
+	system("$0@ARGV");
 
 }elsif ("$upreq" eq "n" or "$upreq" eq "N" or "$upreq" eq "no" or "$upreq" eq "No" or "$upreq" eq "NO" or "$upreq" eq "nO"){
-	$whilereq = "YES";
-
+	print "  " . color("on_red") . "[-] You Must To Update Now !!\n" . color("reset");
+	exit 0;
 }else{
 	print "  " . color("on_red") . "[-] Command '$upreq' Not Found !!\n" . color("reset");
 	$whilereq = "NO";
