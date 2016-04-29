@@ -8,9 +8,10 @@ my $file = "grabber/joomlist.txt";
 my $vnum = "0";
 my $nvnum = "0";
 my $url2 = "";
-
-
+my $zx = LWP::UserAgent->new;
+$zx->agent("Mozilla/8.0");
 open(j,"<$file") or die "$!";
+
 
 banner();
 print color("green") , "\n   [+] Scanning...          [ This May Take Few Minutes ] \n" , color("reset");
@@ -47,7 +48,7 @@ print FFFF "$htmlfile";
 
 
 
-
+	print color("yellow") , "\n   [!] Started At : " . ctime() . color("reset");
 # Checking Joomla Version
 my $pourl = "https://joomjunk.co.uk/extras-page/joomla-version-detect.html";
 my $joomver = $ou->post($pourl , { site => $url , submit => '' , })->content;
@@ -91,21 +92,12 @@ if ("$version" ne ""){
 	print color("green") , "   [+] Server : $1\n" . color("reset");
 	}
 
-	$headercon =~ m/Content-Type: (.*)/;
-	if ("$headercon" eq ""){
-	print "   " , color("on_red") , "[-] Cannot Detect Content-Type !!\n" . color("reset");
-	}else{
-	print color("green") , "   [+] Content-Type : $1\n" . color("reset");
-	}
 
 	if ( "$headersss" =~ "Set-Cookie:"){
 		print color("green") , "   [+] Passwords Are Passing Through None-Encrypt HTTP [You Can Sniffing Users Password].\n" . color("reset");
 	}else{
 		print "   " , color("on_red") , "[-] The Passwords Are Passing Through Encrypt Channel.\n" . color("reset");
 	}
-
-
-
 
 
 	# Check Firewall Status
@@ -202,11 +194,10 @@ if ("$htnum" eq "0"){
 
 	# Admin Panel Finder
 	my $srobots = $ou->get("$url/robots.txt")->decoded_content;
-	if (head("$url/robots.txt") and "$srobots" =~ "User-agent:" or "$srobots" =~ "User-agent:" or "$srobots" =~ "Disallow:"){
+	if (head("$url/robots.txt") or "$srobots" =~ "User-agent:" or "$srobots" =~ "User-agent:" or "$srobots" =~ "Disallow:"){
 	print color("green") , "   [+] Robots File Found At : $url/robots.txt\n" . color("reset");
 	$htnum = $htnum + 1;
 	}
-
 	if (head("$url/administrator")){
 	print color("green") , "   [+] Admin Panel Found At : $url/administrator/\n" . color("reset");
 	print color("yellow") , "    -  The Attacker Can Do Bruteforce Attack Easly\n" . color("reset");	
@@ -224,12 +215,6 @@ if ("$htnum" eq "0"){
 	}else{
 	print "   " , color("on_red") , "[-] Admin Panel Not Found !!\n" . color("reset");
 	}
-
-
-
-
-
-
 
 
 
@@ -251,7 +236,7 @@ if ("$joomsource" =~ "$fl"){
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
 
 
-open(RES , '>>' . 'Result/$surl.html') or die "$!";
+open(RES , '>>' . "Result/$surl.html") or die "$!";
 print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
@@ -279,13 +264,19 @@ while(<www>){
 	my $tl2 = "$fields2[2]";
 	my $fol2 = "$fields2[3]";
 
-if (head("$url" . "$fl2")){
+	my $joomua = LWP::UserAgent->new;
+    $joomua->agent("Mozilla/8.0");	# Pretend to be Mozilla
+
+    my $joomreq = HTTP::Request->new(GET => "$url$fl2");
+    my $joomres = $joomua->request($joomreq);
+
+if ($joomres->is_success){
 	print color("yellow") , "   [+] Vuln. Plugin     : $fl2\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : $tl2\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : $sl2\n\n" , color("reset");
 
 
-open(RES , '>>' . 'Result/Black-Hawk.html') or die "$!";
+open(RES , '>>' . "Result/Black-Hawk.html") or die "$!";
 print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
 print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
@@ -337,7 +328,13 @@ foreach my $backjup (@conbfigs){
 if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
 	my $skjdfhsdjkf = "sdajkfh";
 }else{
-    if (head("$url/$backjup")) {
+
+    my $backbackua = LWP::UserAgent->new;
+    $backbackua->agent("Mozilla/8.0");	# Pretend to be Mozilla
+    my $backbackreq = HTTP::Request->new(GET => "$url/$backjup");
+    my $backbackres = $backbackua->request($backbackreq);
+
+    if ($backbackres->is_success) {
     print color("yellow") . "\a    - File Found : $url/$backjup\n" . color("reset");
     $bbnum = $bbnum + 1;
     }
@@ -357,6 +354,9 @@ if ("$bbnum" eq "0"){
 
 
 
+
+
+
 # Config Finder Request ^_^
 my $ccnum = "0";
 my $conreqq = "No";
@@ -366,16 +366,22 @@ my $conreq = <STDIN>;
 chomp($conreq);
 if ("$conreq" eq "y" or "$conreq" eq "Y" or "$conreq" eq "Yes" or "$conreq" eq "yes" or "$conreq" eq "YES" or "$conreq" eq ""){
 	$conreqq = "Yes";
-@cnconfigs = ('configuration.php' , 'configuration.php~' , 'configuration.php.new' , 'configuration.php.new~' , 'config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
+@cnconfigs = ('configuration.php' , 'wp-config.php' , 'wp-config.php~' , 'configuration.php~' , 'configuration.php.new' , 'configuration.php.new~' , 'config.php~','config.php.new','config.php.new~','config.php.old','config.php.old~','config.bak','config.php.bak','config.php.bkp','config.txt','config.php.txt','config - Copy.php');
 foreach $cnconfig(@cnconfigs){
     $sourcsse=$ou->get("$url/$cnconfig")->decoded_content;
-    if(head("$url/$config") and $sourcsse =~ m/DB_NAME/i || $sourcsse =~ m/define/i || $sourcsse =~ m/\'\)\;/i || $sourcsse =~ m/\"\)\;/i){
+    my $confua = LWP::UserAgent->new;
+    $confua->agent("Mozilla/8.0");	# Pretend to be Mozilla
+    my $confreq = HTTP::Request->new(GET => "$url/$cnconfig");
+    my $confres = $confua->request($confreq);
+    if($confres->is_success){
+    if ($sourcsse =~ m/DB_NAME/i || $sourcsse =~ m/define/i || $sourcsse =~ m/\'\)\;/i || $sourcsse =~ m/\"\)\;/i){
     	print color("yellow") . "\a    - Config File Path : $url/includes/$cnconfig\n" . color("reset");
     	$ccnum = $ccnum + 1;
     }
 }
+}
 if ("$ccnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Config File !!\n" . color("reset");
+	print color("on_red") . "      [-] Not Found Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
@@ -399,7 +405,13 @@ if ("$shreq" eq "y" or "$shreq" eq "Y" or "$shreq" eq "Yes" or "$shreq" eq "yes"
 	$shreqq = "Yes";
 @shells = ('c99.php' , '.c99.php' , 'wos.php' , 'wso.php' , '.wos.php' , '.wso.php' , '.r57.php' , 'r57.php' , 'sql.php' , '.sql.php' , 'shell.php' , '.shell.php');
 foreach $shell(@shells){
-    if(head("$url/$shell")){
+
+	my $shshua = LWP::UserAgent->new;
+    $shshua->agent("Mozilla/8.0");	# Pretend to be Mozilla
+    my $shshreq = HTTP::Request->new(GET => "url/$shell");
+    my $shshres = $shshua->request($shshreq);
+
+    if($shshres->is_success){
     	print color("yellow") . "\a    - Shell File Path : $url/$shell\n" . color("reset");
     	$scnum = $scnum + 1;
     }
@@ -452,42 +464,42 @@ foreach my $subdodo (@subconfigs){
     	if ("$srt" =~ "Access denied." or "$srt" =~ "404 Not Found"){
     		my $rjdskhfg = "dfgjshd";
     		}else{
-    print color("yellow") . "\a    - Subdomain Found : $subdodo$urlf\n" . color("reset");
+    print color("yellow") . "\a   -  Subdomain Found : $subdodo$urlf\n" . color("reset");
     $bsubnum = $bsubnum + 1;
 }
     }
 }
 if ("$bsubnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Subdomain !!\n" . color("reset");
+	print "      " . color("on_red") . "[-] Not Found Any Subdomain !!\n" . color("reset");
 }
 }elsif ("$subreq" eq "n" or "$subreq" eq "N" or "$subreq" eq "no" or "$subreq" eq "No" or "$subreq" eq "NO" or "$subreq" eq "nO"){
 		$subreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$subreq' Not Found !!\n" . color("reset");
+		print "      " . color("on_red") . "[-] Command '$subreq' Not Found !!\n" . color("reset");
 		$subreqq = "No";
 	}
 }
-
-
-
-
-
-
 
 
 # Upload Files Finder Request ^_^
 my $supum = "0";
 my $supupreqq = "No";
 while ("$supupreqq" eq "No"){
-print color("cyan") . "\n  [~] Do You Want To Start Upload-Finder ? [Y/n] : " . color("reset");
+print color("cyan") . "\n  [~] Do You Want To Start Shell-Finder ? [Y/n] : " . color("reset");
 my $suprreq = <STDIN>;
 chomp($suprreq);
 if ("$suprreq" eq "y" or "$suprreq" eq "Y" or "$suprreq" eq "Yes" or "$suprreq" eq "yes" or "$suprreq" eq "YES" or "$suprreq" eq ""){
 	$supupreqq = "Yes";
 @uploadsp = ("/up.php", "/up1.php", "up/up.php", "/site/up.php", "/vb/up.php", "/forum/up.php", "/blog/up.php", "/upload.php", "/upload1.php", "/upload2.php", "/vb/upload.php", "/forum/upload.php", "blog/upload.php", "site/upload.php", "download.php");
 foreach $ups(@uploadsp){
-    if(head("$url/$ups")){
+
+    my $upupua = LWP::UserAgent->new;
+    $upupua->agent("Mozilla/8.0");	# Pretend to be Mozilla
+    my $upupreq = HTTP::Request->new(GET => "$url/$ups");
+    my $upupres = $upupua->request($upupreq);
+
+    if($upupres->is_success){
     	print color("yellow") . "\a    - Upload File Path : $url/$ups\n" . color("reset");
     	$supum = $supum + 1;
     }
@@ -511,32 +523,33 @@ if ("$supum" eq "0"){
 
 
 
+
 if ("$vnum" eq "0"){
-	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("on_red") , "  [-] Sorry Not Exploit Found." , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested   : $nvnum\n" , color("reset");
+	print "  " . color("on_red") . "[-] Sorry Not Found." , color("reset");
 }else{
-	print color("yellow") , "\n  [!] Exploit Tested : $nvnum\n" , color("reset");
-	print color("yellow") , "  [!] Exploit Found  : $vnum\n" , color("reset");
+	print color("yellow") , "\n  [!] Exploit Tested   : $nvnum\n" , color("reset");
+	print color("yellow") , "  [!] Exploit Found    : $vnum\n" , color("reset");
 }
 if ("$scnum" ne "0"){
-	print color("yellow") . "  [-] Shell Found : $scnum\n" . color("reset");
+	print color("yellow") . "  [-] Shell Found      : $scnum\n" . color("reset");
 }
 
 if ("$ccnum" ne "0"){
-	print color("yellow") . "  [-] Config Found : $ccnum\n" . color("reset");
+	print color("yellow") . "  [-] Config Found     : $ccnum\n" . color("reset");
 }
 
 if ("$bbnum" ne "0"){
-	print color("yellow") . "  [-] Backup Found : $bbnum\n" . color("reset");
+	print color("yellow") . "  [-] Backup Found     : $bbnum\n" . color("reset");
 }
 
 if ("$bsubnum" ne "0"){
-	print color("yellow") . "  [-] Subdomain Found : $bsubnum\n" . color("reset");
+	print color("yellow") . "  [-] Subdomain Found  : $bsubnum\n" . color("reset");
 }
 
 
 if ("$supum" ne "0"){
-	print color("yellow") . "  [-] Upload Found : $supum\n" . color("reset");
+	print color("yellow") . "  [-] Upload Found     : $supum\n" . color("reset");
 }
 
 
