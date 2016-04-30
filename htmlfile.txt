@@ -7,7 +7,6 @@
 <Link href='http://up.dev-point.com/uploads1/8deb960e465b1.png' rel='SHORTCUT ICON'/>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>Coded By Black Hawk</title>
-<body oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;'>
 <style type="text/css">
 h1 {color: #333;font-size: 50px;margin: 1px auto;text-align:center;text-transform:uppercase; font-family:Orbitron;}
 .neon {color: #FFFFFF;text-shadow: 0 0 5px #1ab4e7, 0 0 10px #1ab4e7, 0 0 30px #18a2d0, 0 0 45px #18a2d0, 0 0 60px #18a2d0;}
