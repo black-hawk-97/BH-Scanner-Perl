@@ -8,6 +8,15 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>Coded By Black Hawk</title>
 <style type="text/css">
+::-moz-selection { /* Code for Firefox */
+    color: green;
+    background: red;
+}
+
+::selection {
+    color: green;
+    background: red;
+}
 h1 {color: #333;font-size: 50px;margin: 1px auto;text-align:center;text-transform:uppercase; font-family:Orbitron;}
 .neon {color: #FFFFFF;text-shadow: 0 0 5px #1ab4e7, 0 0 10px #1ab4e7, 0 0 30px #18a2d0, 0 0 45px #18a2d0, 0 0 60px #18a2d0;}
 
