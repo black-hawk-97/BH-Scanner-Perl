@@ -2,10 +2,12 @@
 # Coded By Black Hawk ^_^
 # 2016/04/25  11:17 PM
 
+use strict;
 use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
-use strict;
+use Time::localtime;
+
 
 my $url = "";
 my $ou = new LWP::UserAgent;
