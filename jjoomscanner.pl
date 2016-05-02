@@ -43,8 +43,9 @@ my $surl = "$urlf";
 $surl =~ s/\///g;
 my $htmlfile = $ou->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/htmlfile.txt")->decoded_content;
 chomp($surl);
-open (FFFF,">" . "Result/$surl.html");
+open (FFFF, '>' , "Result/$surl.html");
 print FFFF "$htmlfile";
+close FFFF;
 
 
 
@@ -236,12 +237,12 @@ if ("$joomsource" =~ "$fl"){
 	print color("yellow") , "   [+] Exploit          : $sl\n\n" , color("reset");
 
 
-open(RES , '>>' . "Result/$surl.html") or die "$!";
-print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
-close RES;
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "$fl2" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "$tl2" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "$sl2" . '</font></b><br><br>' . "\n";
+close FOFO;
 
 	$vnum = $vnum + 1;
 }
@@ -276,13 +277,12 @@ if ($joomres->is_success){
 	print color("yellow") , "   [+] Exploit          : $sl2\n\n" , color("reset");
 
 
-open(RES , '>>' . "Result/Black-Hawk.html") or die "$!";
-print RES '<h1><font color="green" size="4">URL : ' . "$url" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Vulnerable Plugin : ' . "$fl" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Vulnerable With : ' . "$tl" . '</font></h1>' . "\n";
-print RES '<h1><font color="green" size="4">Exploit : ' . "$sl" . '</font></h1><br><br>' . "\n";
-close RES;
-
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "$fl2" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "$tl2" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "$sl2" . '</font></b><br><br>' . "\n";
+close FOFO;
 
 
 	$vnum = $vnum + 1;
@@ -296,21 +296,204 @@ close RES;
 
 # Search By Version
 if ("$version" != ""){
+
+
 if ("$version" eq "1.5" or "$version" eq "1.6" or "$version" eq "1.7" or "$version" eq "3.0" or "$version" eq "3.1" or "$version" eq "3.2" or "$version" eq "3.3" or "$version" eq "3.4" or "$version" =~ "1.5." or "$version" =~ "1.6." or "$version" =~ "1.7." or "$version" =~ "3.0." or "$version" =~ "3.1." or "$version" =~ "3.2." or "$version" =~ "3.3." or "$version" =~ "3.4." or "$version" =~ "3.4.5"){
 	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
-	print color("yellow") , "   [+] Vulnerable With  : Object Injection RCE\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Object Injection RCE X-Forwarded-For Header\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zp9YU\n\n" , color("reset");
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable In : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : Object Injection RCE X-Forwarded-For Header</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : http://adf.ly/1Zp9YU</font></b><br><br>' . "\n";
+close FOFO;
 	$vnum = $vnum + 1;
 }
+
 if ("$version" eq "3.2" or "$version" =~ "3.2." or "$version" =~ "3.3." or "$version" =~ "3.4." or "$version" =~ "3.3" or "$version" =~ "3.4"){
 	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
 	print color("yellow") , "   [+] Vulnerable With  : SQL-Injection\n" , color("reset");
 	print color("yellow") , "   [+] Exploit          : http://adf.ly/1ZpAKy\n\n" , color("reset");
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "SQL-Injection" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1ZpAKy" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zztjv\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zztjv" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.5.21"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : SQL-Injection\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1ZzuYu\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "SQL-Injection" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1ZzuYu" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.5.20"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzubt\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzubt" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.7.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzufw\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzufw" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.6.4" or "$version" =~ "1.6." or "$version" =~ "1.6" or "$version" =~ "1.5" or "$version" =~ "1.4" or "$version" =~ "1.3" or "$version" =~ "1.2" or "$version" =~ "1.1" or "$version" =~ "1.0" or "$version" =~ "1.0."){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzuq5\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzuq5" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.6.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : SQL-Injection\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzutc\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "SQL-Injection" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzutc" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.6.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Disclosure/Full Path Disclosure Vulnerability\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1ZzuxB\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Disclosure/Full Path Disclosure Vulnerability" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1ZzuxB" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.6.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzv1e\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzv1e" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+
+if ("$version" =~ "1.7.0"){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : http://adf.ly/1Zzv5b\n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "http://adf.ly/1Zzv5b" . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.5.9" and head("$url/components/com_content/")){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : A XSS vulnerability exists in the category view of com_content. \n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "A XSS vulnerability exists in the category view of com_content. " . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.5.10" and head("$url/components/com_users/")){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : Cross Site Scripting\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : A XSS vulnerability exists in the user view of com_users in the administrator panel. \n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "Cross Site Scripting" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "A XSS vulnerability exists in the user view of com_users in the administrator panel. " . '</font></b><br><br>' . "\n";
+close FOFO;
+	$vnum = $vnum + 1;
+}
+
+if ("$version" =~ "1.5.0" and head("$url/administrator/components/com_installer")){
+	print color("yellow") , "   [+] Vulnerable In    : V$version\n" , color("reset");
+	print color("yellow") , "   [+] Vulnerable With  : CSRF\n" , color("reset");
+	print color("yellow") , "   [+] Exploit          : N/A \n\n" , color("reset");
+
+open(FOFO , '>>' , "Result/$surl.html") or die "$!";
+print FOFO '<b><font color="green" size="4">URL : ' . "$url" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable Plugin : ' . "V$version" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Vulnerable With : ' . "CSRF" . '</b></font><br>' . "\n";
+print FOFO '<b><font color="green" size="4">Exploit : ' . "N/A" . '</font></b><br><br>' . "\n";
+close FOFO;
 	$vnum = $vnum + 1;
 }
 # Add Here The Version Vulnerability
 }
-
 
 
 # Backup Finder Request ^_^
@@ -322,10 +505,10 @@ my $backreq = <STDIN>;
 chomp($backreq);
 if ("$backreq" eq "y" or "$backreq" eq "Y" or "$backreq" eq "Yes" or "$backreq" eq "yes" or "$backreq" eq "YES" or "$backreq" eq ""){
 	$backreqq = "Yes";
-@conbfigs = ('db.txt' , '/backup.tar.gz', '/backup/backup.tar.gz', '/backup/backup.zip', '/vb/backup.zip', '/site/backup.zip', '/backup.zip', '/backup.rar', '/backup.sql', '/vb/vb.zip', '/vb.zip', '/vb.sql', '/vb.rar', '/vb1.zip', '/vb2.zip', '/vbb.zip', '/vb3.zip', '/upload.zip', '/up/upload.zip', '/joomla.zip', '/joomla.rar', '/joomla.sql', '/wordpress.zip', '/wp/wordpress.zip', '/blog/wordpress.zip', '/wordpress.rar' , 'backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
+@conbfigs = ('site.zip' , 'site.tar.gz' , 'site.tar' , 'site.rar' , 'wp.zip' , 'wp.tar' , 'wp.gzip' , 'wp.tar.gz' , 'wp.deb' , 'joomla.zip' , 'joomla.gzip' , 'joomla.tar' , 'joomla.rar' , 'joomla.tar.gz' , 'joomla.zip~' , 'wp.zip~' , 'database.zip' , 'wp.sql~' , 'wp.sql' , 'site.sql' , "$surl.zip" , "$surl.sql" , "$surl.tar" , "$surl.tar~" , "$surl.tar.gz" , "$surl.tar.gz~" , 'db.txt' , '/backup.tar.gz', '/backup/backup.tar.gz', '/backup/backup.zip', '/vb/backup.zip', '/site/backup.zip', '/backup.zip', '/backup.rar', '/backup.sql', '/vb/vb.zip', '/vb.zip', '/vb.sql', '/vb.rar', '/vb1.zip', '/vb2.zip', '/vbb.zip', '/vb3.zip', '/upload.zip', '/up/upload.zip', '/joomla.sql', '/wordpress.zip', '/wp/wordpress.zip', '/blog/wordpress.zip', '/wordpress.rar' , 'backup.zip','upload.zip','vb.zip','forum.zip','forum.tar','forum.tar.gz','backup.tar.gz','2.zip','1.zip','database.zip','sql.zip','backup.sql','database.sql','db.sql','site.sql','DB.sql','Database.sql','db.zip','1.sql','Database.zip');
 foreach my $backjup (@conbfigs){
 
-if ($ou->get("$url$backjup")->decoded_content =~ "file does not exist"){
+if ($ou->get("$url/$backjup")->decoded_content =~ "file does not exist"){
 	my $skjdfhsdjkf = "sdajkfh";
 }else{
 
