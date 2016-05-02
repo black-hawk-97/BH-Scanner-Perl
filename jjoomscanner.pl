@@ -524,13 +524,13 @@ if ($ou->get("$url/$backjup")->decoded_content =~ "file does not exist"){
 }
 }
 if ("$bbnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Backup File !!\n" . color("reset");
+	print "      " . color("on_red") . "[-] Not Found Any Backup File !!\n" . color("reset");
 }
 }elsif ("$backreq" eq "n" or "$backreq" eq "N" or "$backreq" eq "no" or "$backreq" eq "No" or "$backreq" eq "NO" or "$backreq" eq "nO"){
 		$backreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$backreq' Not Found !!\n" . color("reset");
+		print "      " . color("on_red") . "[-] Command '$backreq' Not Found !!\n" . color("reset");
 		$backreqq = "No";
 	}
 }
@@ -564,14 +564,14 @@ foreach $cnconfig(@cnconfigs){
 }
 }
 if ("$ccnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Config File !!\n" . color("reset");
+	print "      " . color("on_red") . "[-] Not Found Config File !!\n" . color("reset");
 }
 
 }elsif ("$conreq" eq "n" or "$conreq" eq "N" or "$conreq" eq "no" or "$conreq" eq "No" or "$conreq" eq "NO" or "$conreq" eq "nO"){
 		$conreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$conreq' Not Found !!\n" . color("reset");
+		print "      " . color("on_red") . "[-] Command '$conreq' Not Found !!\n" . color("reset");
 		$conreqq = "No";
 	}
 }
@@ -600,14 +600,14 @@ foreach $shell(@shells){
     }
 }
 if ("$scnum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Shell File !!\n" . color("reset");
+	print "      " . color("on_red") . "[-] Not Found Any Shell File !!\n" . color("reset");
 }
 
 }elsif ("$shreq" eq "n" or "$shreq" eq "N" or "$shreq" eq "no" or "$shreq" eq "No" or "$shreq" eq "NO" or "$shreq" eq "nO"){
 		$shreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$shreq' Not Found !!\n" . color("reset");
+		print "      " . color("on_red") . "[-] Command '$shreq' Not Found !!\n" . color("reset");
 		$shreqq = "No";
 	}
 }
@@ -688,14 +688,14 @@ foreach $ups(@uploadsp){
     }
 }
 if ("$supum" eq "0"){
-	print color("on_red") . "      [-] Not Found Any Upload File !!\n" . color("reset");
+	print "      " . color("on_red") . "[-] Not Found Any Upload File !!\n" . color("reset");
 }
 
 }elsif ("$suprreq" eq "n" or "$suprreq" eq "N" or "$suprreq" eq "no" or "$suprreq" eq "No" or "$suprreq" eq "NO" or "$suprreq" eq "nO"){
 		$supupreqq = "Yes";
 	print "\n";
 	}else{
-		print color("on_red") . "      [-] Command '$suprreq' Not Found !!\n" . color("reset");
+		print "      " . color("on_red") . "[-] Command '$suprreq' Not Found !!\n" . color("reset");
 		$supupreqq = "No";
 	}
 }
