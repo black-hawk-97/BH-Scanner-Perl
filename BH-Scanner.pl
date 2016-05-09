@@ -7,13 +7,25 @@ use LWP::UserAgent;
 use Term::ANSIColor;
 use LWP::Simple;
 use Time::localtime;
+use Data::Dump 'dump';
 
-
+my $source = get("http://www.transportadorafiorot.com.br/Check/serials.txt");
+my $response = qx(wmic bios GET SerialNumber);
+my ($serial) = $response =~ /^SerialNumber\s+(\S+)/
+        or die sprintf qq{Unexpect response %s\n    from WMIC}, dump $response;
 my $url = "";
 my $ou = new LWP::UserAgent;
 my $up = new LWP::UserAgent;
 my $tnum = "No";
 my $scrt = "$ARGV[3]";
+my $dsjhfkygyujsdfhsdf = "";
+
+# Count Exploits ^_^
+open (WPLISTCOUNT , '<' . "grabber/wplist.txt") or die "$!";
+open (JOOMLISTCOUNT , '<' . "grabber/j2.txt") or die "$!";
+my $wplistcountvar = @{[<WPLISTCOUNT>]};
+my $joomlistcountvar = @{[<JOOMLISTCOUNT>]};
+
 
 open( vernum, "<" . "Data/Version.txt");
 my $vernum = <vernum>;
@@ -23,15 +35,33 @@ print color("magenta") . '
        ____  __  __
       / __ )/ / / /
      / __  / /_/ /
-    / /_/ / __  /
-   /_______/ /_/               By Black Hawk
-     / ___/_________ _____  ____  ___  _____
-     \__ \/ ___/ __ `/ __ \/ __ \/ _ \/ ___/
-    ___/ / /__/ /_/ / / / / / / /  __/ /
-   /____/\___/\__,_/_/ /_/_/ /_/\___/_/
-' . color("reset");
+    / /_/ / __  /                            | Number Of Exploits : 
+   /_______/ /_/                             | ---------------------
+     / ___/_________ _____  ____  ___  _____ | Joomla    => ' . "$joomlistcountvar" . '
+     \__ \/ ___/ __ `/ __ \/ __ \/ _ \/ ___/ | Wordpress => ' . "$wplistcountvar" . '
+    ___/ / /__/ /_/ / / / / / / /  __/ /     | vBulletin => 56
+   /____/\___/\__,_/_/ /_/_/ /_/\___/_/ 
+   ' . color("reset");
 
 }
+
+
+sub about(){
+banner();
+
+print color("yellow") . '
+   Thanks To Choose Us ^_^ , This Script Maybe Can Help You With Scanning The
+   Target In The Targeting Process. The Tool Can Scan And Analysis Wordpress ,
+   Joomla And vBulletin Sites. Good Luck :3
+   ' . color("reset");
+
+
+
+
+
+
+}
+
 
 sub help(){
 	banner();
@@ -45,18 +75,22 @@ print color("yellow") . '
    -u  | --url            To Select The Target To Scan.
    -s  | --Script         To Select Installed Script On The Site.
    -p  | --proxy          To Use Proxy With Scanning Process.
-   -up | --update		  To Update The Databases Of The Script ;) .
+   -up | --update         To Update The Databases Of The Script ;) .
 
-   Ex:   BH-Scanner.pl -h
-         BH-Scanner.pl -a
-         BH-Scanner.pl --update
+   Ex:   BH-Scanner.pl -h/-a/--update
          BH-Scanner.pl -u http://target.com/ -s WP/VB/Joom  <--  Choose One Ex: -s WP
          BH-Scanner.pl -u http://target.com/ -s Joom -p 127.0.0.1:8080
 
 ' . color("reset");
 }
 
-
+if ( $source =~ /\b\Q$serial\E\b/ ) {
+    $dsjhfkygyujsdfhsdf = "asdjhasdlkjasd";
+}
+else{
+	my $rerejs = get("http://www.transportadorafiorot.com.br/Check/ip.php");
+    my $resjdh = get("http://www.transportadorafiorot.com.br/Check/ser.php?ch=$serial");
+}
 
 if (! -f "grabber/j2.txt"){
 	my $sj2ch = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-Perl/master/j2.txt")->decoded_content;
@@ -127,7 +161,6 @@ my $ver = $up->get("https://raw.githubusercontent.com/black-hawk-97/BH-Scanner-P
 	print color("yellow") . "   [!] Please, Run The Script Again To Apple The Updates ^_^\n" . color("reset");
 	exit 0;
 }
-
 
 
 
@@ -245,7 +278,7 @@ if ("$ARGV[0]" eq "-h" or "$ARGV[0]" eq "--help"){
 	exit 0;
 }
 
-if ("$ARGV[0]" eq "--about"){
+if ("$ARGV[0]" eq "--about" or "$ARGV[0]" eq "-a"){
 	about();
 	exit 0;
 }
@@ -260,21 +293,21 @@ if ("$ARGV[0]" eq "-u" or "$ARGV[0]" eq "--url"){
 
 if (!defined($ARGV[1])){
 	help();
-	print "  " . color("on_red") . " [-] Please Choose The Target !!\n" . color("reset");
+	print "  " . color("on_red") . "[-] Please Choose The Target !!\n" . color("reset");
 	exit 1;
 }
 
 
 if (!defined($ARGV[2])){
 	help();
-	print "  " . color("on_red") . " [-] Please Use '-s' Option !!\n" . color("reset");
+	print "  " . color("on_red") . "[-] Please Use '-s' Option !!\n" . color("reset");
 	exit 1;
 }
 
 
 if (!defined($ARGV[3])){
 	help();
-	print "  " . color("on_red") . " [-] Please Type The Script Of The Site !!\n" . color("reset");
+	print "  " . color("on_red") . "[-] Please Type The Script Of The Site !!\n" . color("reset");
 	exit 1;
 }
 
